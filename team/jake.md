@@ -1,0 +1,1 @@
+I am a fourth year computer science major with an interest in backend development and AI. I want to make our app have a simple yet appealing UI that allows users to easily upload the product they wanna buy and see an organized list of sites that sell the same or similar product for cheaper.
