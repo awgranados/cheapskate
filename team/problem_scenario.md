@@ -1,0 +1,5 @@
+- Jax Johnson is a 2nd year college student at Stanford trying to save money.
+- He wants to buy a new Hydroflask because his old one is moldy.
+- He goes Hydroflask website and thinks $50 is too expensive for a 32oz bottle.
+- He clicks the Cheapskate extension and sees that REI is selling the same bottle for $32 instead.
+- Jax buys the hydroflask and saves $18. 
