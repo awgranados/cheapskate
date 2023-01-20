@@ -1,0 +1,10 @@
+{
+"manifest_version": 3,
+"name": "Hello World",
+"description": "Lab01 assignment.",
+"version": "1.0",
+"action": {
+    "default_icon": "yippee.png",
+    "default_popup": "window.html"
+    }
+}
