@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Cheapskate Test",
+  "description": "Base Level Extension for Cheapskate",
+  "version": "1.0",
+  "action": {
+    "default_popup": "hello.html",
+    "default_icon": "logo.png"
+  }
+}
