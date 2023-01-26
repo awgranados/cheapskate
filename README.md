@@ -1,5 +1,8 @@
 # project-t03-cheapskate
 
+## Tech Stack
+
+## Project Details
 
 ## User Roles
 We essentially only have one user role, which is the user of the extension. There is no need for any sort of admin maintenance, other than on the developing end. There is only one type of user, and it is the person inputting information to the extension.
