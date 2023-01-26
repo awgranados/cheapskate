@@ -4,7 +4,12 @@
 "description": "Lab01 assignment.",
 "version": "1.0",
 "action": {
-    "default_icon": "yippee.png",
     "default_popup": "window.html"
-    }
+    },
+"content_scripts": [
+        {
+            "matches": ["http://*/*"],
+            "css": ["./background.css"]
+        }
+    ]
 }
