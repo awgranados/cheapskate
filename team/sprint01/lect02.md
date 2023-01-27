@@ -1,6 +1,5 @@
 
-Project: Teaching CS148
-Mentor: Vivian Ross
+Project: Cheapskate | Mentor: Vivian Ross
 
 Meeting Time: lect02
 
