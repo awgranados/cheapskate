@@ -1,8 +1,12 @@
 {
 "manifest_version": 3,
-"name": "Hello World",
-"description": "Lab01 assignment.",
+"name": "Cheapskate",
+"description": "Cheapskate Price Hunting",
 "version": "1.0",
+"icons": {
+    "16": "images/logo.png",
+    "48": "images/icon48.png"
+  },
 "action": {
     "default_popup": "window.html"
     },
