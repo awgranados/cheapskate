@@ -1,0 +1,1 @@
+I'm Alexander Granados and I'm a 3rd year computer science student. I think that we should focus on having a simplistic, clean and uncluttered UI. 

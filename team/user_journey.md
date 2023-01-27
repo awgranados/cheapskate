@@ -1,0 +1,4 @@
+- As a single mom, I can click the Cheapskate extension, and see a list of the cheaper options of children's products. 
+- As a college athlete, I can easily distinguish the savings I will get from choosing one of the Cheapskate suggestions, so that I can save more money. 
+- As a user, I can see the cheapest option at the top of the list, so that I can easily save the most money possible.
+- As a user, I can see all the prices displayed, so that I can easily compare.

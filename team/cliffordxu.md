@@ -1,0 +1,1 @@
+Hi, I am a 4th year computer science major with an interest in backend development, machine learning, and quant. I want to learn new things through doing this app and make it a very simple to use interface that is appealing to the general population who online shops.
