@@ -1,4 +1,4 @@
-Project: Teaching CS148 Mentor: Avishek De, Vivian Ross
+Project: Cheapskate | Mentor: Avishek De, Vivian Ross
 
 Meeting Time: lect03
 
