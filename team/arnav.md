@@ -1,2 +1,1 @@
-Arnav Nayudu
-Group 3
+Hi, I'm Arnav Nayudu, a 3rd year Computer Science student. I look forward to learning more about web development and Chrome extensions while building this project, and I hope we are able to create a useful interface for our user.
