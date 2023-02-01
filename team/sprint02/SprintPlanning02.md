@@ -14,5 +14,3 @@ In addition, the team will be working on discussing the "user journey" for our a
 the user journey in separate files.
 
 Tech stack for designing the Chrome extension was finalized today and inputted into the spreadsheet.
-
-

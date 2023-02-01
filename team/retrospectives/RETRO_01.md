@@ -5,14 +5,12 @@
 
 ## Action item
 
-* a goal: identify something the team wants to get better at
-* a change: identify one thing that the team will change about how it works together
-* a measurement: identify at least one way to measure whether the change helped the team achieve the goal, or move closer to it.
-
+* a goal: Better communication and a better spread out division of work to complete more tasks 
+* a change: Work on the project throughout the week instead of just doing work in class and make sure all the tasks are divided properly
+* a measurement: When we have a more populated Kanban board and we are getting a higher volume of tasks put in the done section by the end of the week that's how we can measure that our progress has improved
 
 ## Retro Assessment
 
-* A brief description of what retro outline or process you used.
-* A brief assessment of how it went.
-* What advice would you give to the next person leading a retro
-  based on what you learned today?
+* I used the start stop continue retro process to figure out what we should do to improve our team 
+* It was useful because it helped us identify our flaws and figure out what we need to change to complete our tasks properly
+* I would say that to keep it simple is better because usually the most major flaws aren't super specific but just general things to change.
