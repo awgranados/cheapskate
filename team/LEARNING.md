@@ -1,7 +1,9 @@
 Lab03 Slack Channel Posts (..._help):
-| Name             | Channel          | Notes                                                |
--------------------|------------------|------------------------------------------------------|
-| Rishabh Poikayil | tech_python_help | Posted tutorial to build a full-feature app in Flask |                 
+| Name              | Channel          | Notes                                                |
+--------------------|------------------|------------------------------------------------------|
+| Rishabh Poikayil  | tech_python_help | Posted tutorial to build a full-feature app in Flask |   
+| Jake Yim          | tech_python_help | Posted tutorial for database schema design through Django models |   
+| Alexander Granados| tech_git_help    | Posted Git and Github crash course tutorial |
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 Present Plan (1/31 - Present):\
