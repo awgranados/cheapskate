@@ -19,7 +19,12 @@ async function scrapeProduct(url) {
         var price = await get_price.jsonValue();
         price = price.replace(/(\r\n|\n|\r|\t)/gm, "").trim();
 
-        console.log({name, price});
+        x_path_link = '//*[@id="search_resultsRows"]/a[' + num_text + ']/@href';
+        var [el3] = await page.$x(x_path_link);
+        var get_link = await el3.getProperty('textContent');
+        var link = await get_link.jsonValue(); 
+
+        console.log({name, price, link});
     }
 
     browser.close();
