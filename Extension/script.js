@@ -1,6 +1,9 @@
 const form = document.getElementById("searchForm")
+const table = document.getElementById("data-table");
 
 form.addEventListener("submit", function(e){
+    table.innerHTML = "<tr><th>Title</th><th>Cost</th><th>Link</th></tr>"
+    table.style.display = "none"
     e.preventDefault();
 
     const stringParam = document.getElementById("name").value
@@ -21,8 +24,15 @@ form.addEventListener("submit", function(e){
     fetch(`http://localhost:3000/scrape/${encodeURIComponent(url)}`)
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        // console.log(data)
         document.getElementById("result").innerHTML = JSON.stringify(data, null, 2);
-    });
 
+        for(let i = 0;i<data.length;i++){
+            const game = data[i]
+            console.log(game)
+            const row = `<td>${game.name}</td><td>${game.price}</td><td><a href=${game.link}>Store Link</a></td>`
+            table.innerHTML += row;
+          }
+          table.style.display = "block";
+    });
 }, false)
