@@ -1,28 +1,36 @@
-function alertSearch(string){
-    alert("searching for "+string)
-}
-
 const form = document.getElementById("searchForm")
 const table = document.getElementById("data-table");
 
-form.addEventListener("submit", function(){
-    const val = document.getElementById("name").value
-    alertSearch(val)
-}, false)
+form.addEventListener("submit", function(e){
+    e.preventDefault();
 
-form.addEventListener("submit", event => {
-    event.preventDefault();
-  
-    info = [["CoD", "$19.99"],
-            ["Halo", "$14.99"],
-            ["Minecraft", "$5"]]
-  
-    for(let i = 0;i<info.length;i++){
-      const gameInfo = info[i]
-      console.log(gameInfo)
-      const row = `<td>${gameInfo[0]}</td><td>${gameInfo[1]}</td>`
-      table.innerHTML += row;
+    const stringParam = document.getElementById("name").value
+    param = ""
+    words = stringParam.split(" ")
+    for (let i = 0; i < words.length; i++){
+        param = param.concat("", words[i])
+        if (i != words.length-1){
+            param = param.concat("+")
+        } 
     }
-    table.style.display = "block";
-  });
-  
+    console.log(param)
+
+    const site = "https://store.steampowered.com/search/?term="
+    const url = site.concat("", param)
+
+    console.log("fetching...")
+    fetch(`http://localhost:3000/scrape/${encodeURIComponent(url)}`)
+    .then(response => response.json())
+    .then(data => {
+        // console.log(data)
+        document.getElementById("result").innerHTML = JSON.stringify(data, null, 2);
+
+        for(let i = 0;i<data.length;i++){
+            const game = data[i]
+            console.log(game)
+            const row = `<td>${game.name}</td><td>${game.price}</td><td><a href=${game.link}>Store Link</a></td>`
+            table.innerHTML += row;
+          }
+          table.style.display = "block";
+    });
+}, false)
