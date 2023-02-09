@@ -2,6 +2,8 @@ const form = document.getElementById("searchForm")
 const table = document.getElementById("data-table");
 
 form.addEventListener("submit", function(e){
+    table.innerHTML = "<tr><th>Title</th><th>Cost</th><th>Link</th></tr>"
+    table.style.display = "none"
     e.preventDefault();
 
     const stringParam = document.getElementById("name").value
