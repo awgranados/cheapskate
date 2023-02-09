@@ -33,3 +33,23 @@ form button{
     letter-spacing: 0px;
     cursor: pointer;
 }
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+th {
+    background-color: cadetblue;
+    color: #ffffff;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+#data-table{
+    display: none;
+}

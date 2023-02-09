@@ -5,6 +5,11 @@
         <link href="/css/fontawesome.css" rel="stylesheet">
         <!-- <link href="/css/brands.css" rel="stylesheet"> -->
         <link href="/css/solid.css" rel="stylesheet">
+        <style>
+            #data-table {
+                display: none;
+            }
+        </style>
     </head>
     <h1>Cheapskate</h1>
     <body>
@@ -13,16 +18,16 @@
                 <button type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
             </form>
         <div class="container">
-                <table id="data-table" style="display: none;">
+                <table id="data-table">
                         <tr>
                             <th>Title</th>
-                            <th>Cost</th>
+                            <th>Original</th>
+                            <th>Discount</th>
                             <th>Link</th>
                         </tr>
                 </table>
         </div>
         <div id = "result">
-
         </div>
     </body>
     <script src = "script.js"></script>
