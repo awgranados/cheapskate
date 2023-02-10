@@ -4,7 +4,7 @@
 * Node.js v16+
 
 ## Dependencies
-TODO: List which libraries / add-ons you added to the project, and the purpose each of those add-ons serves in your app.
+Puppeteer: for web-scraping the steam store
 
 ## Installation Steps
 * Install/Update git
