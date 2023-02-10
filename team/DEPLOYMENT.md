@@ -3,9 +3,6 @@
 * npm v8+
 * Node.js v16+
 
-## Dependencies
-Puppeteer: for web-scraping the steam store
-
 ## Installation Steps
 * Install/Update git
 * Clone repo: git clone git@github.com:ucsb-cs148-w23/project-t03-cheapskate.git
