@@ -1,7 +1,8 @@
 # project-t03-cheapskate
 
-##Installation
-##Prerequisites
+## Installation
+
+## Prerequisites
 TODO: List what a user needs to have installed before running the installation instructions below (e.g., git, which version(s) of your framework(s) of choice)
 
 ## Dependencies
