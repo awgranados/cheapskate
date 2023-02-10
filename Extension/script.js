@@ -2,7 +2,7 @@ const form = document.getElementById("searchForm");
 const table = document.getElementById("data-table");
 
 form.addEventListener("submit", function(e){
-    table.innerHTML = "<tr><th>Title</th><th>Original</th><th>Discount</th><th>Link</th></tr>";
+    table.innerHTML = "<tr><th>Title</th><th>Original</th><th>Discount</th><th>Link</th><th>Create List</th></tr>";
     table.style.display = "none";
     e.preventDefault();
 
@@ -40,7 +40,7 @@ form.addEventListener("submit", function(e){
             cost2 = "$" + costs[1];
             }
 
-            const row = `<td>${game.name}</td><td>${cost1}</td><td>${cost2}</td><td><a href=${game.link}>Store Link</a></td>`;
+            const row = `<td>${game.name}</td><td>${cost1}</td><td>${cost2}</td><td><a href=${game.link}>Store Link</a></td><td><button type="button">Add</button></td>`;
             table.innerHTML += row;
           }
           table.style.display = "block";
