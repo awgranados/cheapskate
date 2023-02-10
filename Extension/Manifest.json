@@ -1,7 +1,7 @@
 {
 "manifest_version": 3,
 "name": "Cheapskate",
-"description": "Cheapskate Price Hunting",
+"description": "User-curated games lists",
 "version": "1.0",
 "icons": {
     "16": "images/logo.png",
