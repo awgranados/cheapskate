@@ -6,7 +6,7 @@
 The user simply needs to search up the title of the game they wish to see, and the extension will return the fetched information in a table inside the popup window.
 
 ## Known Problems
-TODO: Describe any known issues, bugs, odd behaviors or code smells. Provide steps to reproduce the problem and/or name a file or a function where the problem lives.
+Clicking on one of the fetched links will immediately close the extension window.
 
 ## Tech Stack
 HTML, CSS, JS, Python, Chrome Developer Tools
