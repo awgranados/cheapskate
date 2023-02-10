@@ -3,6 +3,9 @@
 * npm v8+
 * Node.js v16+
 
+## Dependencies
+* Puppeteer v19: A node.js library that allows us to scrape websites and retrieve the needed information.
+
 ## Installation Steps
 * Install/Update git
 * Clone repo: git clone git@github.com:ucsb-cs148-w23/project-t03-cheapskate.git
