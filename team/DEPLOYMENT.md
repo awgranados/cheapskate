@@ -15,7 +15,7 @@
 3. Click the "Load Unpacked" button at the top left of your screen. 
 4. Select the project-t03-cheapskate/Extension folder. 
 
-# Running the Extension
+## Running the Extension
 5. In the command line, execute: cd steam-scraper (make sure you are in the project-t03-cheapskate directory)
 6. Run the command: node app.js
 
