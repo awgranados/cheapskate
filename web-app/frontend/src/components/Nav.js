@@ -1,7 +1,11 @@
 import React from 'react'; // ES6 js
 import {Link} from 'react-router-dom';
+import LoginButton from './loginButton';
+import LogoutButton from './logoutButton';
+import UserProfile from './userProfile';
 
 function Nav() {
+      
     return(
         <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark top">
             <div class='container-fluid'>
@@ -9,9 +13,18 @@ function Nav() {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div id="navMainMenu" class="navbar-collapse collapse">
-                    <div class='navbar'>
+                    <div class='navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2'>
                         <Link to='/' className="nav-item nav-link active">Cheapskate</Link>
                         <Link to='/lists' className="nav-item nav-link">Lists</Link>
+                        <LogoutButton/>
+
+                        <ul class ="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <LoginButton/>
+                                <UserProfile/>
+                            </li>
+                        </ul>
+
                         {/* <Link to='/search' className="nav-item nav-link">Search</Link> */}
                     </div>
                 </div>
