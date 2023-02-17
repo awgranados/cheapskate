@@ -13,10 +13,20 @@ function FormTab() {
     setDescription(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(`Title: ${title}, Description: ${description}`);
+    const data = { title, description };
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/postForm`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    const responseJson = await response.text();
+    console.log(responseJson);
   };
+  
 
   return (
     <Box 

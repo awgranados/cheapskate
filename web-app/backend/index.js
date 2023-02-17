@@ -5,9 +5,12 @@ const mongoose = require('mongoose');
 require('dotenv/config');
 
 const app = express();
+const cors = require('cors');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-app.use('/', routesHandler);
+// app.use('/', routesHandler);
+app.use(cors());
+app.post('/postForm', routesHandler);
 
 //DB Connection
 mongoose.connect(process.env.DB_URI, {useNewUrlParser:true, useUnifiedTopology:true})
@@ -17,7 +20,6 @@ mongoose.connect(process.env.DB_URI, {useNewUrlParser:true, useUnifiedTopology:t
 .catch( (err) => {
     console.log(err);
 });
-
 
 const PORT = process.env.PORT || 4000; // backend routing port
 app.listen(PORT, () => {
