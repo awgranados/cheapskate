@@ -1,27 +1,58 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { TextField, Button, Typography, Box } from '@material-ui/core';
 
 function FormTab() {
+  const [title, setTitle] = React.useState('');
+  const [description, setDescription] = React.useState('');
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(`Title: ${title}, Description: ${description}`);
+  };
+
   return (
-    <div>
-      <h2>Form Unit Test</h2>
-      <Form>
-        <Form.Group controlId="formName">
-          <Form.Label>Game:</Form.Label>
-          <Form.Control type="text" placeholder="Enter Game" />
-        </Form.Group>
-
-        <Form.Group controlId="formEmail">
-          <Form.Label>Description:</Form.Label>
-          <Form.Control type="text" placeholder="Enter description" />
-        </Form.Group>
-
-
-        <Button variant="primary" type="submit">
-          Submit
+    <Box 
+      border={1} 
+      borderRadius={4} 
+      borderColor="grey.400" 
+      p={2} 
+      textAlign="left"
+    >
+      <Typography variant="h5" gutterBottom>
+        Create a new post
+      </Typography>
+      <form onSubmit={handleSubmit}>
+        <TextField
+          label="Title"
+          value={title}
+          onChange={handleTitleChange}
+          variant="outlined"
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Description (optional)"
+          value={description}
+          onChange={handleDescriptionChange}
+          variant="outlined"
+          fullWidth
+          margin="normal"
+          multiline
+          rows={4}
+        />
+        <Button type="submit" variant="contained" color="primary">
+          Post
         </Button>
-      </Form>
-    </div>
+      </form>
+    </Box>
   );
 }
 
