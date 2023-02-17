@@ -1,2 +1,9 @@
 .DS_Store
+<<<<<<< HEAD
 .cache
+=======
+node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/
+>>>>>>> efc7d735 (get top 5 from steam)
