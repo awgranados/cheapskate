@@ -3,6 +3,7 @@ import './App.css';
 import Nav from './components/Nav';
 import Home from './components/Home';
 import Lists from './components/Lists';
+import FormTab from './components/FormTab';
 import Loading from './components/Loading';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {useAuth0} from "@auth0/auth0-react";
@@ -23,6 +24,8 @@ function App() {
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/lists" element={<Lists />} />
+            <Route path="/form" element={<FormTab />} />
+
         </Routes>
       </header>
     </div>

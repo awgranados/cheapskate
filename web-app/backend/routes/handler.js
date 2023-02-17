@@ -54,4 +54,33 @@ router.post('/addList', async(req, res) => {
     }
 });
 
+router.post('/postForm', async(req, res) => {
+    const gameTitle = req.body.title;
+    const gameDesc = req.body.description;
+    const user = Schemas.Users;
+    const userId = await user.findOne({username:'clifford'}).exec();
+
+    const newGame = new Schemas.Games({
+        title: gameTitle,
+        desc: gameDesc,
+        user: userId._id
+    });
+
+    try {
+        await newGame.save( (err, newGameResults) => {
+            if (err) {
+                res.status(500).send("Error Saving.");
+                console.log(err);
+            }
+            else {
+                res.redirect('/form');
+            }
+        });
+    }catch (err){
+        console.log(err);
+        res.redirect('/form');
+        res.end();
+    }
+});
+
 module.exports = router;

@@ -12,9 +12,16 @@ const listSchema = new Schema({
     user: {type:Schema.Types.ObjectId, ref:'users'}
 });
 
+const gameSchema = new Schema({
+    title: {type:String, required:true},
+    description: {type:String, required:true},
+    user: {type:Schema.Types.ObjectId, ref:'users'}
+});
+
 const Users = mongoose.model('users', userSchema, 'users');
 const Lists = mongoose.model('lists', listSchema, 'lists');
-const mySchemas = {'Users': Users, 'Lists': Lists};
+const Games = mongoose.model('games', gameSchema, 'games');
+const mySchemas = {'Users': Users, 'Lists': Lists, 'Games': Games};
 
 module.exports = mySchemas;
 

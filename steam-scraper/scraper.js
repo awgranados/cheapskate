@@ -30,4 +30,4 @@ async function scrapeProduct(url) {
     browser.close();
 }
 
-scrapeProduct("https://store.steampowered.com/search/?term=call+of+duty")
+module.exports = scrapeProduct("https://store.steampowered.com/search/?term=call+of+duty")
