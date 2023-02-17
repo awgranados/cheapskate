@@ -63,4 +63,6 @@ app.get('/scrape/:url', async (req, res) => {
     console.log(data)
     res.send(data);
   });
+
+module.exports = scrapeProduct;
   
