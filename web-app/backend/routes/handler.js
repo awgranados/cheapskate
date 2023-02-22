@@ -43,14 +43,10 @@ router.post('/addList', async(req, res) => {
 
     try {
         await newList.save( (err, newListResults) => {
-            if (err) res.end("Error Saving.");
-            res.redirect('/lists');
-            res.end();
+            res.status(200).send("Success!")
         });
     }catch (err){
-        console.log(err);
-        res.redirect('/lists');
-        res.end();
+        res.status(500).send(err);
     }
 });
 
@@ -68,18 +64,10 @@ router.post('/postForm', async(req, res) => {
 
     try {
         await newGame.save( (err, newGameResults) => {
-            if (err) {
-                res.status(500).send("Error Saving.");
-                console.log(err);
-            }
-            else {
-                res.redirect('/form');
-            }
+            res.status(200).send("Success!")
         });
     }catch (err){
-        console.log(err);
-        res.redirect('/form');
-        res.end();
+        res.status(500).send(err);
     }
 });
 

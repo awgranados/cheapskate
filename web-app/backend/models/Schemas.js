@@ -14,7 +14,7 @@ const listSchema = new Schema({
 
 const gameSchema = new Schema({
     title: {type:String, required:true},
-    description: {type:String, required:true},
+    description: {type:String},
     user: {type:Schema.Types.ObjectId, ref:'users'}
 });
 
