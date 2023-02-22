@@ -31,15 +31,15 @@ const Schemas = require('../models/Schemas.js');
 //     })
 // });
 
-// router.post('/addList', async(req, res) => {
-//     const userList = req.body.listInput;
-//     const user = Schemas.Users;
-//     const userId = await user.findOne({username:'user_one'}).exec();
+router.post('/addList', async(req, res) => {
+    const userList = req.body.listInput;
+    const user = Schemas.Users;
+    const userId = await user.findOne({username:'user_one'}).exec();
 
-//     const newList = new Schemas.Lists({
-//         list: userList,
-//         user: userId._id
-//     });
+    const newList = new Schemas.Lists({
+        list: userList,
+        user: userId._id
+    });
 
     try {
         await newList.save( (err, newListResults) => {
