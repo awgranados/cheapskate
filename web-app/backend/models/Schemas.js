@@ -13,8 +13,8 @@ const listSchema = new Schema({
 });
 
 const gameSchema = new Schema({
-    title: {type:String, required:true},
-    description: {type:String, required:true},
+    title: {type:String, required: false},
+    description: {type:String, required: false},
     user: {type:Schema.Types.ObjectId, ref:'users'}
 });
 

@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 // app.use('/', routesHandler);
 app.use(cors());
-app.post('/postForm', routesHandler);
+app.use('/form', routesHandler);
 
 //DB Connection
 mongoose.connect(process.env.DB_URI, {useNewUrlParser:true, useUnifiedTopology:true})
