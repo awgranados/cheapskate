@@ -17,29 +17,29 @@ const Schemas = require('../models/Schemas.js');
 //     }
 // });
 
-router.get('/lists', async(req, res) =>{
-    const lists = Schemas.Lists;
+// router.get('/lists', async(req, res) =>{
+//     const lists = Schemas.Lists;
 
-    const userLists = await lists.find({}).populate("user").exec((err, listData) => {
-        if (err) throw err;
-        if(listData) {
-            res.end(JSON.stringify(listData));
-        }
-        else{
-            res.end();
-        }
-    })
-});
+//     const userLists = await lists.find({}).populate("user").exec((err, listData) => {
+//         if (err) throw err;
+//         if(listData) {
+//             res.end(JSON.stringify(listData));
+//         }
+//         else{
+//             res.end();
+//         }
+//     })
+// });
 
-router.post('/addList', async(req, res) => {
-    const userList = req.body.listInput;
-    const user = Schemas.Users;
-    const userId = await user.findOne({username:'user_one'}).exec();
+// router.post('/addList', async(req, res) => {
+//     const userList = req.body.listInput;
+//     const user = Schemas.Users;
+//     const userId = await user.findOne({username:'user_one'}).exec();
 
-    const newList = new Schemas.Lists({
-        list: userList,
-        user: userId._id
-    });
+//     const newList = new Schemas.Lists({
+//         list: userList,
+//         user: userId._id
+//     });
 
     try {
         await newList.save( (err, newListResults) => {
@@ -50,7 +50,7 @@ router.post('/addList', async(req, res) => {
     }
 });
 
-router.post('/postForm', async(req, res) => {
+router.post('/form', async(req, res) => {
     const gameTitle = req.body.title;
     const gameDesc = req.body.description;
     const user = Schemas.Users;
