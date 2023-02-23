@@ -25,7 +25,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/lists" element={<Lists />} />
             <Route path="/form" element={<FormTab />} />
-
         </Routes>
       </header>
     </div>
