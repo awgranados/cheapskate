@@ -16,7 +16,7 @@ function FormTab() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = { title, description };
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/postForm`, {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/form`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
