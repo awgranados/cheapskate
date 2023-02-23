@@ -23,7 +23,13 @@ async function scrapeProduct(url) {
         var [el3] = await page.$x(x_path_link);
         var get_link = await el3.getProperty('textContent');
         var link = await get_link.jsonValue(); 
+        
+//         x_path_image = '//*[@id="search_resultsRows"]/a[' + num_text + ']/div[1]/img';
+//         var [el4] = await page.$x(x_path_image);
+//         var get_img = await el4.getProperty('src');
+//         var img = await get_link.jsonValue(); 
 
+//         console.log({name, price, link, img});
         console.log({name, price, link});
     }
 
