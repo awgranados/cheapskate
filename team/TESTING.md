@@ -1,5 +1,5 @@
 As of 2/17/23
-1) The unit test requirement for lab05 will be done using MochaJS or Cypress and will be a part of the Extension folder. The intent is to check if the correct results are being returned from the scraper that was the primary base for our working MVP. This scraper will be integrated into the web application later.
+1) The unit test requirement for lab05 will be done using MochaJS and will be a part of a subfolder called 'test' in the Extension folder. The intent is to check if the correct results are being returned from the scraper that was the primary base for our working MVP. This scraper will be integrated into the web application in the next couple of weeks.
 2) The plan is to write unit tests for each individual GET and POST method being implemented since most of our features will be based on processing and retreiving user information from the connected database.
-3) Yet to be decided. Currently in progress.
-4) Yet to be decided. Currently in progress.
+3) The component test for lab06 will be done using MochaJS and will be a part of a subfolder called 'test' in the web-app folder. The intent is to check if the endpoints are being hit for the form submission process where a user can enter details about a game add them to a list.
+4) The current plan is to create some integration tests for our web application since the functionalities that are present can work in tandem quite effectively. The primary integration test would be to create a list, add some games, and display it to the user on the associated page. Other tests may include duplicating another user's (public) lists, sharing lists publicly, and checking the rating system to verify if a user's ratings are properly displayed alongside corresponding games.
