@@ -1,4 +1,4 @@
-As of 2/17/23
+As of 2/24/23
 1) The unit test requirement for lab05 will be done using MochaJS and will be a part of a subfolder called 'test' in the Extension folder. The intent is to check if the correct results are being returned from the scraper that was the primary base for our working MVP. This scraper will be integrated into the web application in the next couple of weeks.
 2) The plan is to write unit tests for each individual GET and POST method being implemented since most of our features will be based on processing and retreiving user information from the connected database.
 3) The component test for lab06 will be done using MochaJS and will be a part of a subfolder called 'test' in the web-app folder. The intent is to check if the endpoints are being hit for the form submission process where a user can enter details about a game add them to a list.
