@@ -29,20 +29,6 @@ router.post('/addList', async (req, res) => {
       return;
     }
 
-// router.get('/lists', async(req, res) =>{
-//     const lists = Schemas.Lists;
-
-//     const userLists = await lists.find({}).populate("user").exec((err, listData) => {
-//         if (err) throw err;
-//         if(listData) {
-//             res.end(JSON.stringify(listData));
-//         }
-//         else{
-//             res.end();
-//         }
-//     })
-// });
-
     const { listInput } = fields;
     const user = await Users.findOne({ username: 'user_one' }).exec();
 
