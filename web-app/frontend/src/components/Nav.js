@@ -1,8 +1,7 @@
 import React from 'react'; // ES6 js
 import {Link} from 'react-router-dom';
 import LoginButton from './loginButton';
-import LogoutButton from './logoutButton';
-import UserProfile from './userProfile';
+import Dropdown from './dropdown';
 
 function Nav() {
       
@@ -17,14 +16,12 @@ function Nav() {
                         <Link to='/' className="nav-item nav-link active">Cheapskate</Link>
                         <Link to='/lists' className="nav-item nav-link">Lists</Link>
                         <Link to='/form' className="nav-item nav-link">Form</Link>
-
-                        <LogoutButton/>
-
+                        
                         <ul class ="navbar-nav ml-auto">
                             <li class="nav-item active">
                                 <LoginButton/>
-                                <UserProfile/>
                             </li>
+                            <Dropdown/>
                         </ul>
 
                         {/* <Link to='/search' className="nav-item nav-link">Search</Link> */}
