@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import FormData from "form-data";
 
 function Lists() {
   const [listInput, setListInput] = useState("");
@@ -18,28 +17,20 @@ function Lists() {
   const handleListInputChange = (event) => {
     setListInput(event.target.value);
   };
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const response = await fetch("/addList", {
+    const data = { listInput };
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/addList`, {
       method: "POST",
-      body: formData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     });
-    try {
-      const data = await response.json();
-      if (response.ok) {
-        alert(data.message);
-        fetchItems();
-      } else {
-        alert(data.error);
-      }
-    } catch (error) {
-      console.log(error);
-      alert("Error adding list");
-    }
-    setListInput("");
-};
+    const responseJson = await response.text();
+    console.log(responseJson);
+  };
 
   return (
     <section>

@@ -20,31 +20,22 @@ router.get('/lists', async (req, res) => {
 });
 
 router.post('/addList', async (req, res) => {
-  const form = new formidable.IncomingForm();
+  const listTitle = req.body.listInput
 
-  form.parse(req, async (err, fields, files) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send('Error adding list');
-      return;
-    }
+  const user = await Users.findOne({ username: 'clifford' }).exec();
 
-    const { listInput } = fields;
-    const user = await Users.findOne({ username: 'user_one' }).exec();
-
-    const newList = new Lists({
-      list: listInput,
-      user: user._id
-    });
-
-    try {
-      await newList.save();
-      res.status(200).send('List added successfully!');
-    } catch (err) {
-      console.log(err);
-      res.status(500).send('Error adding list');
-    }
+  const newList = new Schemas.Lists({
+    list: listTitle,
+    user: user._id
   });
+  try {
+    await newList.save((err, newListResults) => {
+      res.status(200).send('List added successfully!');
+    });
+      
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 router.post('/postForm', async (req, res) => {
