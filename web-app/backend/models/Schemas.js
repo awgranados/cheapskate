@@ -1,4 +1,10 @@
 const mongoose = require('mongoose');
+mongoose.connect(process.env.DB_URI, {
+  bufferCommands: false,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 300000, // Increase the timeout value
+});
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
