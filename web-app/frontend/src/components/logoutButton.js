@@ -5,7 +5,7 @@ function LogoutButton(){
 
     return(
         isAuthenticated && (
-            <button className="dropdown-item" onClick={() => logout()} class="btn btn-block btn-link"> Log out! </button>
+            <button className="dropdown-item" onClick={() => logout({logoutParams:{returnTo: window.location.origin}})} class="btn btn-block btn-link"> Log out! </button>
         )
     )
 };
