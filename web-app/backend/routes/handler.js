@@ -61,15 +61,10 @@ router.post('/postForm', async (req, res) => {
 
   try {
     await newGame.save((err, newGameResults) => {
-      if (err) {
-        res.status(500).send('Error Saving.');
-        console.log(err);
-      }
+      res.status(200).send('Posted form!');
     });
   } catch (err) {
-    console.log(err);
-    res.redirect('/form');
-    res.end();
+    res.status(500).send(err);
   }
 });
 
