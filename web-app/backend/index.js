@@ -11,7 +11,8 @@ app.use(bodyParser.json());
 // app.use('/', routesHandler);
 app.use(cors());
 app.post('/postForm', routesHandler);
-app.post('/addList', routesHandler)
+app.post('/addList', routesHandler);
+app.get('/lists', routesHandler);
 //DB Connection
 mongoose.connect(process.env.DB_URI, {useNewUrlParser:true, useUnifiedTopology:true})
 .then( () => {

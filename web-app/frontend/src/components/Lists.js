@@ -9,7 +9,7 @@ function Lists() {
   }, []);
 
   const fetchItems = async () => {
-    const data = await fetch("/lists");
+    const data = await fetch(`${process.env.REACT_APP_BASE_URL}/lists`);
     const items = await data.json();
     setItems(items);
   };

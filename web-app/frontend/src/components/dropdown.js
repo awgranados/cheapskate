@@ -20,9 +20,9 @@ function Dropdown(){
                         </div>
                     </a>
                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Placeholder 1</a>
-                        <a class="dropdown-item" href="#">Placeholder 2</a>
-                        <a class="dropdown-item" href="#">Placeholder 3</a>
+                        <a className="dropdown-item" href="#">Placeholder 1</a>
+                        <a className="dropdown-item" href="#">Placeholder 2</a>
+                        <a className="dropdown-item" href="#">Placeholder 3</a>
                         <div className="dropdown-divider"></div>
                         <LogoutButton/>
                     </div>
