@@ -2,6 +2,9 @@
 
 ## [Deployment Instructions](./team/DEPLOYMENT.md)
 
+## Project Deployment
+https://t03-cheapskate.onrender.com/
+
 ## Functionality
 The user simply needs to search up the title of the game they wish to see, and the extension will return the fetched information in a table inside the popup window.
 
