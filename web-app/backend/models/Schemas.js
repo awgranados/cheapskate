@@ -1,10 +1,4 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.DB_URI, {
-  bufferCommands: false,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 300000, // Increase the timeout value
-});
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -19,9 +13,9 @@ const listSchema = new Schema({
 });
 
 const gameSchema = new Schema({
+  user: { type: Schema.Types.ObjectId, ref: 'users' },
   title: { type: String, required: true },
-  desc: { type: String, required: false },
-  user: { type: Schema.Types.ObjectId, ref: 'users' }
+  desc: { type: String, required: false }
 });
 
 const Users = mongoose.model('users', userSchema, 'users');
