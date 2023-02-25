@@ -4,6 +4,20 @@ const formidable = require('formidable');
 const Schemas = require('../models/Schemas.js');
 const { Lists, Users } = require('../models/Schemas');
 
+router.get('/addUser', async(req, res) => {
+    const user = {username: 'user_two', fullname: 'User Two'};
+    const newUser = new Schemas.Users(user);
+
+    try {
+        await newUser.save( async(err, newUserResult) => {
+            console.log('New user created!');
+            res.end('New user created!');
+        });
+    } catch (err) {
+        console.log(err);
+        res.end('User not added!');
+    }
+});
 router.get('/lists', async (req, res) => {
   const lists = Schemas.Lists;
 

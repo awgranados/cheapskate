@@ -20,9 +20,11 @@
   "devDependencies": {
     "@playwright/test": "^1.30.0",
     "chai": "^4.3.7",
-    "mocha": "^10.2.0"
+    "mocha": "^10.2.0",
+    "supertest": "^6.3.3"
   },
   "dependencies": {
+    "mongoose": "^6.10.0",
     "objects-to-csv": "^1.3.6",
     "playwright": "^1.30.0",
     "puppeteer": "^19.7.1"
