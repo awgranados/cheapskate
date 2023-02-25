@@ -24,3 +24,4 @@ The user will be able to open the extension, have the extension take in the name
 
 ## Testing
 To test the steam-scraper, go into the Extension directory and run 'mocha' to run all the tests.
+To test the backend, go into the backend directory and run 'mocha' to run all the tests.
