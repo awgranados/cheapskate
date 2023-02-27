@@ -44,7 +44,7 @@ router.post('/addList', async (req, res) => {
   });
   try {
     await newList.save((err, newListResults) => {
-      res.status(200).send('List added successfully!');
+      res.status(200).send(JSON.stringify(newListResults));
     });
       
   } catch (err) {

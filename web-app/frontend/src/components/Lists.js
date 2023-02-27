@@ -9,8 +9,9 @@ function Lists() {
   }, []);
 
   const fetchItems = async () => {
-    const data = await fetch("/lists");
+    const data = await fetch(`${process.env.REACT_APP_BASE_URL}/lists`);
     const items = await data.json();
+    console.log(items)
     setItems(items);
   };
 
@@ -28,7 +29,8 @@ function Lists() {
       },
       body: JSON.stringify(data),
     });
-    const responseJson = await response.text();
+    const responseJson = await response.json();
+    setItems([...items, responseJson]);
     console.log(responseJson);
   };
 
@@ -65,6 +67,33 @@ function Lists() {
           </div>
         ))}
       </div>
+      {/* <div style={{ overflow: 'scroll', height: '400px' }}>
+        <form onSubmit={handleSubmit}>
+            <div className="input-group justify-content-center">
+                <div className="input-group-prepend">
+                <input
+                    type="text"
+                    name="listInput"
+                    className="form-control"
+                    value={listInput}
+                    onChange={handleListInputChange}
+                />
+                <input
+                    type="submit"
+                    value="Add"
+                    className="btn btn-primary mb-2"
+                />
+                </div>
+            </div>
+            </form>
+        {items.map(item => (
+        <div key={item._id}>
+          <h3>{item.user.fullname}</h3>
+          <p>{item.list}</p>
+          <hr />
+        </div>
+        ))}
+      </div> */}
     </section>
   );
 }
