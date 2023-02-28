@@ -1,5 +1,6 @@
 import React from 'react';
 import { TextField, Button, Typography, Box } from '@material-ui/core';
+import './FormTab.css';
 
 function FormTab() {
   const [title, setTitle] = React.useState('');
@@ -30,9 +31,10 @@ function FormTab() {
 
   return (
     <Box 
+      className="form-tab-container"
       border={1} 
       borderRadius={4} 
-      borderColor="grey.400" 
+      borderColor="gray" 
       p={2} 
       textAlign="left"
     >
@@ -67,3 +69,5 @@ function FormTab() {
 }
 
 export default FormTab;
+
+
