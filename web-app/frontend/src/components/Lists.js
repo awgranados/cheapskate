@@ -56,44 +56,7 @@ function Lists() {
             </div>
           </div>
         </form>
-        {items.map((item) => (
-          <div className="row padding" key={item._id}>
-            <div className="alert alert-info rounded-pill" role="alert">
-              <i className="fa fa-user mr-2"></i>{" "}
-              <i>
-                {item.user.fullname} ({item.user.username}): {item.list}
-              </i>
-            </div>
-          </div>
-        ))}
       </div>
-      {/* <div style={{ overflow: 'scroll', height: '400px' }}>
-        <form onSubmit={handleSubmit}>
-            <div className="input-group justify-content-center">
-                <div className="input-group-prepend">
-                <input
-                    type="text"
-                    name="listInput"
-                    className="form-control"
-                    value={listInput}
-                    onChange={handleListInputChange}
-                />
-                <input
-                    type="submit"
-                    value="Add"
-                    className="btn btn-primary mb-2"
-                />
-                </div>
-            </div>
-            </form>
-        {items.map(item => (
-        <div key={item._id}>
-          <h3>{item.user.fullname}</h3>
-          <p>{item.list}</p>
-          <hr />
-        </div>
-        ))}
-      </div> */}
     </section>
   );
 }
