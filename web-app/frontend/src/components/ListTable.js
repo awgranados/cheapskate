@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./ListTable.css";
+import {Link} from "react-router-dom";
 
 function ListTable() {
   const [lists, setLists] = useState([]);
@@ -37,10 +38,12 @@ function ListTable() {
           </thead>
           <tbody>
           {lists.map((list) => (
-            <tr key={list._id}>
-              <td>{`${list.user.fullname} (${list.user.username})`}</td>
-              <td>{list.list}</td>
-            </tr>
+              <tr key={list._id}>
+                <Link to={`/list/${list._id}`} key={list._id}>
+                  <td>{`${list.user.fullname} (${list.user.username})`}</td>
+                  <td>{list.list}</td>
+                </Link>
+              </tr>
           ))}
         </tbody>
         </table>
