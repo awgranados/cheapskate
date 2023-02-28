@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {Link} from 'react-router-dom';
 
 function Lists() {
   const [listInput, setListInput] = useState("");
@@ -57,14 +58,16 @@ function Lists() {
           </div>
         </form>
         {items.map((item) => (
-          <div className="row padding" key={item._id}>
-            <div className="alert alert-info rounded-pill" role="alert">
-              <i className="fa fa-user mr-2"></i>{" "}
-              <i>
-                {item.user.fullname} ({item.user.username}): {item.list}
-              </i>
-            </div>
-          </div>
+           <Link to={`/list/${item._id}`} key={item._id}>
+                <div className="row padding" key={item._id}>
+                    <div className="alert alert-info rounded-pill" role="alert">
+                    <i className="fa fa-user mr-2"></i>{" "}
+                    <i>
+                        {item.user.fullname} ({item.user.username}): {item.list}
+                    </i>
+                    </div>
+                </div>
+            </Link> 
         ))}
       </div>
       {/* <div style={{ overflow: 'scroll', height: '400px' }}>

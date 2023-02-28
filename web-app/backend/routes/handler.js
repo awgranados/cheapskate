@@ -52,6 +52,10 @@ router.post('/addList', async (req, res) => {
   }
 });
 
+// router.get('/list', async (req, res) => {
+
+// });
+
 router.post('/postForm', async (req, res) => {
   const gameTitle = req.body.title;
   const gameDesc = req.body.description;
