@@ -1,14 +1,14 @@
 # Leadership roles
 
-*Product Owner: Rishabh Poikayil
-*Scrum Master: Jake Yim
-*Testing/QA Coordinator: Clifford Xu
-*Retro 3 leader: Arnav Nayudu
-*UX Coordinator: Alexander Granados
-*Design Document Coordinator: Jin Jeong
-*Deployment Document Coordinator: Kelvin Zhang
-*User Manual Coordinator: Alexander Granados
-*Final presentation leader: Arnav Nayudu
+* Product Owner: Rishabh Poikayil
+* Scrum Master: Jake Yim
+* Testing/QA Coordinator: Clifford Xu
+* Retro 3 leader: Arnav Nayudu
+* UX Coordinator: Alexander Granados
+* Design Document Coordinator: Jin Jeong
+* Deployment Document Coordinator: Kelvin Zhang
+* User Manual Coordinator: Alexander Granados
+* Final presentation leader: Arnav Nayudu
 
 
 
