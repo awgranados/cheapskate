@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Lists from './components/Lists';
 import FormTab from './components/FormTab';
 import ListTable from './components/ListTable'; // import the new component
+import Games from './components/Games';
 import Loading from './components/Loading';
 import List from './components/List';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -28,6 +29,7 @@ function App() {
             <Route path="/form" element={<FormTab />} />
             <Route path="/listtable" element={<ListTable />} /> // add the new route
             <Route path="/list/:id" element={<List />} />
+            <Route path="/games" element={<Games />} />
           </Routes>
         </header>
       </div>
