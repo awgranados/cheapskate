@@ -18,6 +18,11 @@ router.get('/addUser', async(req, res) => {
         res.end('User not added!');
     }
 });
+
+// router.get('/list/:id', async (req, res) => {
+//   const { url } = req.params;
+// });
+
 router.get('/lists', async (req, res) => {
   const lists = Schemas.Lists;
 
