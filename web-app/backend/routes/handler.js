@@ -101,10 +101,12 @@ router.post('/addList', async (req, res) => {
   const listTitle = req.body.listInput
 
   const user = await Users.findOne({ username: 'clifford' }).exec();
+  let arr = [];
 
   const newList = new Schemas.Lists({
     list: listTitle,
-    user: user._id
+    user: user._id,
+    game: arr
   });
   try {
     await newList.save((err, newListResults) => {
