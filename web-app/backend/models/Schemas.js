@@ -9,8 +9,7 @@ const userSchema = new Schema({
 
 const listSchema = new Schema({
   list: { type: String, required: true },
-  user: { type: Schema.Types.ObjectId, ref: 'users' },
-  games: [ { type: Schema.Types.ObjectId, ref: 'games'} ]
+  user: { type: Schema.Types.ObjectId, ref: 'users' }
 });
 
 const gameSchema = new Schema({
