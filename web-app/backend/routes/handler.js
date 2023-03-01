@@ -82,11 +82,6 @@ router.get('/addUser', async(req, res) => {
       res.end('User not added!');
   }
 });
-
-// router.get('/list/:id', async (req, res) => {
-//   const { url } = req.params;
-// });
-
 router.get('/lists', async (req, res) => {
   const lists = Schemas.Lists;
 
@@ -106,12 +101,10 @@ router.post('/addList', async (req, res) => {
   const listTitle = req.body.listInput
 
   const user = await Users.findOne({ username: 'clifford' }).exec();
-  let arr = [];
 
   const newList = new Schemas.Lists({
     list: listTitle,
-    user: user._id,
-    game: arr
+    user: user._id
   });
   try {
     await newList.save((err, newListResults) => {
