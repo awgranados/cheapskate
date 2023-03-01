@@ -52,10 +52,8 @@ async function scrapeProduct(url) {
 }
 
 router.get('/scrape/:url', async (req, res, err) => {
-  // console.log(req)
   const { url } = req.params;
   console.log(url)
-
   try{
       data = await scrapeProduct(url)
       console.log(data)
@@ -65,9 +63,9 @@ router.get('/scrape/:url', async (req, res, err) => {
       console.log(err);
       res.end();
   }
-
 });
 
+// should be a POST??
 router.get('/addUser', async(req, res) => {
   const user = {username: 'user_two', fullname: 'User Two'};
   const newUser = new Schemas.Users(user);
@@ -82,6 +80,7 @@ router.get('/addUser', async(req, res) => {
       res.end('User not added!');
   }
 });
+
 router.get('/lists', async (req, res) => {
   const lists = Schemas.Lists;
 
