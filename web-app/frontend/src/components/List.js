@@ -22,6 +22,12 @@ function List() {
     //     ))}
     // </div>
     <div>
+        <form id = "searchForm">
+            <input id = "name" type="text" placeholder="Search for your game here."></input>
+            <button type="submit">
+                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
         <h2>{id}</h2>
     </div>
   );
