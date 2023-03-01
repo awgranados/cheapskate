@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./ListTable.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function ListTable() {
   const [lists, setLists] = useState([]);
@@ -19,7 +19,6 @@ function ListTable() {
     console.log(data);
     setLists(data);
   };
-  
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -37,15 +36,17 @@ function ListTable() {
             </tr>
           </thead>
           <tbody>
-          {lists.map((list) => (
+            {lists.map((list) => (
               <tr key={list._id}>
-                <Link to={`/list/${list._id}`} key={list._id}>
-                  <td>{`${list.user.fullname} (${list.user.username})`}</td>
-                  <td>{list.list}</td>
-                </Link>
+                <td>{`${list.user.fullname} (${list.user.username})`}</td>
+                <td>
+                  <Link to={`/list/${list._id}`} key={list._id}>
+                    {list.list}
+                  </Link>
+                </td>
               </tr>
-          ))}
-        </tbody>
+            ))}
+          </tbody>
         </table>
       </div>
     </section>
