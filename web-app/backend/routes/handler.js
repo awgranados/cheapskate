@@ -19,13 +19,26 @@ router.get('/addUser', async(req, res) => {
     }
 });
 
-// router.get('/list/:id', async (req, res) => {
-//   const { url } = req.params;
-// });
+router.get('/list/:id', async (req, res) => {
+  const { id } = req.params;
+  const lists = Schemas.Lists;
+  const games = Schemas.Games;
+  const userLists = await lists.findById(id)
+    .populate('games')
+    .populate('user')
+    .exec((err, listData) => {
+      if (err) throw err;
+      if (listData) {
+        res.end(JSON.stringify(listData.games));
+      } else {
+        res.end();
+      }
+    });
+});
 
 router.get('/lists', async (req, res) => {
   const lists = Schemas.Lists;
-
+  
   const userLists = await lists.find({})
     .populate('user')
     .exec((err, listData) => {
