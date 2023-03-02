@@ -14,6 +14,8 @@ app.post('/postForm', routesHandler);
 app.post('/addList', routesHandler);
 app.get('/lists', routesHandler);
 app.get('/list/:id', routesHandler)
+app.get('/scrape/:url', routesHandler);
+
 //DB Connection
 mongoose.connect(process.env.DB_URI, {useNewUrlParser:true, useUnifiedTopology:true})
 .then( () => {

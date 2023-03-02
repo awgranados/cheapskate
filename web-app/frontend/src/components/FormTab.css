@@ -1,4 +1,49 @@
-.form-text {
-    color: black;
-  }
-  
+.form-tab-container {
+  background-color: #282c34;
+  color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 24px;
+  width: 36%;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+.form-tab-container h5 {
+  margin-bottom: 16px;
+}
+
+.form-tab-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.form-tab-container .MuiTextField-root {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.form-tab-container .MuiButton-root {
+  margin-top: 16px;
+}
+.form-tab-container .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: white;
+}
+
+.form-tab-container .MuiFormLabel-root {
+  color: white;
+}
+
+.form-tab-container .MuiInputBase-input {
+  color: white;
+}
+
+.form-tab-container .MuiInputBase-root .MuiOutlinedInput-notchedOutline {
+  border-color: white;
+}
+
+.form-tab-container .MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: white;
+}
