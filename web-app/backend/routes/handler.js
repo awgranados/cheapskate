@@ -81,6 +81,8 @@ router.get('/list/:id', async (req, res) => {
       }
     });
 
+})
+
 // should be a POST??
 router.get('/addUser', async(req, res) => {
   const user = {username: 'user_two', fullname: 'User Two'};
