@@ -65,6 +65,22 @@ router.get('/scrape/:url', async (req, res, err) => {
   }
 });
 
+router.get('/list/:id', async (req, res) => {
+  const { id } = req.params;
+  const lists = Schemas.Lists;
+  const games = Schemas.Games;
+  const userLists = await lists.findById(id)
+    .populate('games')
+    .populate('user')
+    .exec((err, listData) => {
+      if (err) throw err;
+      if (listData) {
+        res.end(JSON.stringify(listData.games));
+      } else {
+        res.end();
+      }
+    });
+
 // should be a POST??
 router.get('/addUser', async(req, res) => {
   const user = {username: 'user_two', fullname: 'User Two'};
@@ -83,7 +99,7 @@ router.get('/addUser', async(req, res) => {
 
 router.get('/lists', async (req, res) => {
   const lists = Schemas.Lists;
-
+  
   const userLists = await lists.find({})
     .populate('user')
     .exec((err, listData) => {
