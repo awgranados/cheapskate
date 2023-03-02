@@ -27,6 +27,7 @@ function ListTable() {
 
   return (
     <section>
+      <div style={{ overflow: 'scroll', height: '800px' }}>
       <div className="container-fluid">
         <h1 className="mt-5">My Lists</h1>
         <table className="table">
@@ -47,6 +48,7 @@ function ListTable() {
           ))}
         </tbody>
         </table>
+      </div>
       </div>
     </section>
   );
