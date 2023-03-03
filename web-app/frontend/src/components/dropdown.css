@@ -1,0 +1,99 @@
+/* Hide one of the dropdown arrows */
+.nav-link.dropdown-toggle::before {
+    display: none;
+  }
+  
+  /* Style the dropdown link */
+  .nav-link.dropdown-toggle {
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style the dropdown menu */
+  .dropdown-menu {
+    background-color: #282c34;
+    box-shadow: 0px 5px 10px rgba(255, 251, 251, 0.1);
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+  }
+  
+  /* Style the dropdown menu items */
+  .dropdown-item {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    padding: 16px;
+    margin: 0;
+    transition: background-color 0.2s ease;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f5f5f5;
+  }
+  
+  /* Style the dropdown divider */
+  .dropdown-divider {
+    height: 1px;
+    margin: 0;
+    background-color: #282c34;
+  }
+  
+  /* Style the user info */
+  .dropdown .user-info {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #282c34;
+  }
+  
+  .user-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 16px;
+  }
+  
+  .user-info h5 {
+    margin: 0;
+  }
+  
+  /* Style the logout button */
+  .logout-button {
+    width: 100%;
+    text-align: center;
+    margin-top: 16px;
+  }
+  
+  .logout-button button {
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #282c34;
+    border: none;
+    padding: 16px;
+    margin: 0;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .logout-button button:hover {
+    background-color: #282c34;
+  }
+  
