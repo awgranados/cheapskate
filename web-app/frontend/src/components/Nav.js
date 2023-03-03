@@ -23,9 +23,6 @@ function Nav() {
             <Link to="/" className="nav-item nav-link active">
               Cheapskate
             </Link>
-            <Link to="/lists" className="nav-item nav-link">
-              Lists
-            </Link>
             <Link to="/form" className="nav-item nav-link">
               Form
             </Link>
