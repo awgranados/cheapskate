@@ -5,6 +5,8 @@ function List() {
   const { id } = useParams();
   const [games, setGames] = useState([]);
 
+  const [newGame, setNewGame] = useState("");
+
   useEffect(() => {
     fetchItems();
   }, []);
@@ -16,10 +18,46 @@ function List() {
     setGames(data);
   };
 
+  const handleNewGameChange = (event) => {
+    setNewGame(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    let param = "";
+    let words = newGame.split(" ");
+    for (let i = 0; i < words.length; i++){
+        param = param.concat("", words[i]);
+        if (i != words.length-1){
+            param = param.concat("+");
+        } 
+    }
+
+    const site = "https://store.steampowered.com/search/?term=";
+    const url = site.concat("", param);
+
+    console.log(url)
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/scrape/${encodeURIComponent(url)}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const responseJson = await response.text();
+    console.log(responseJson);
+  };
+
   return (
     <div>
-        <form id = "searchForm">
-            <input id = "name" type="text" placeholder="Search for your game here."></input>
+        <form id = "searchForm" onSubmit = {handleSubmit}>
+            <input 
+            id = "name" 
+            type="text" 
+            placeholder="Search for your game here."
+            value = {newGame}
+            onChange = {handleNewGameChange}>
+            </input>
             <button type="submit">
                 <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
             </button>
