@@ -15,6 +15,4 @@ If you are a gaming enthusiast or critic and want to see how other likeminded pe
 
 ## Other Sections
 
- asdad. asd ad asd ad asd ad a
-
 https://docs.google.com/document/d/1lmr3n7B-Itmb_Q5pbPwiK1vUFEaBy2XhbelwmIOPKfg/edit?usp=sharing
