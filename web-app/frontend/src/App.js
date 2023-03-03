@@ -1,7 +1,6 @@
 import './App.css';
 import Nav from './components/Nav';
 import Home from './components/Home';
-import Lists from './components/Lists';
 import FormTab from './components/FormTab';
 import ListTable from './components/ListTable'; // import the new component
 import Loading from './components/Loading';
@@ -24,7 +23,6 @@ function App() {
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/lists" element={<Lists />} />
             <Route path="/form" element={<FormTab />} />
             <Route path="/listtable" element={<ListTable />} /> // add the new route
             <Route path="/list/:id" element={<List />} />

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./ListTable.css";
 import { Link } from "react-router-dom";
-
+import AddList from "./AddList";
 function ListTable() {
   const [lists, setLists] = useState([]);
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -29,6 +29,7 @@ function ListTable() {
       <div style={{ overflow: 'scroll', height: '800px' }}>
       <div className="container-fluid">
         <h1 className="mt-5">My Lists</h1>
+        <AddList/>
         <table className="table">
           <thead>
             <tr>
