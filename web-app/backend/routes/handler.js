@@ -8,10 +8,11 @@ async function scrapeProduct(url) {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(url);
-  function Game(name, price, link) {
+  function Game(name, price, link, img) {
       this.name = name
       this.price = price
       this.link = link
+      this.img = img
   }
 
   var data = []
@@ -36,7 +37,12 @@ async function scrapeProduct(url) {
       var get_link = await el3.getProperty('textContent');
       var link = await get_link.jsonValue(); 
 
-      games.push(new Game(name, price, link))
+      x_path_image = '//*[@id="search_resultsRows"]/a[' + num_text + ']/div[1]/img';
+      var [el4] = await page.$x(x_path_image);
+      var get_img = await el4.getProperty('src');
+      var img = await get_img.jsonValue(); 
+
+      games.push(new Game(name, price, link, img))
   }
 
   for (i = 0; i < games.length; i++) {
@@ -44,6 +50,7 @@ async function scrapeProduct(url) {
       dict['name'] = games[i].name
       dict['price'] = games[i].price
       dict['link'] = games[i].link
+      dict['img'] = games[i].img
       data[i] = dict
   }
 

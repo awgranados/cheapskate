@@ -1,0 +1,51 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #282c34;
+    z-index: 1;
+  }
+  
+.overlay-content {
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 800px;
+    padding-bottom: 50px;
+}
+
+.modal-table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.modal-table-row {
+    display: table-row; 
+}
+
+.modal-table-header {
+    display: table-header-group;
+}
+
+.modal-table-cell {
+    display: table-cell;
+    padding: 8px;
+    border: 1px solid rgb(48, 48, 55);
+}
+
+.modal-table-cell img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+  

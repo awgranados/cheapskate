@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import "./modal.css"
 
 function List() {
   const { id } = useParams();
   const [games, setGames] = useState([]);
-
+  const [results, setResults] = useState([]);
   const [newGame, setNewGame] = useState("");
+  const [showOverlay, setShowOverlay] = useState(false);
 
   useEffect(() => {
     fetchItems();
@@ -44,9 +46,13 @@ function List() {
         'Content-Type': 'application/json'
       }
     });
-    const responseJson = await response.text();
+    const responseJson = await response.json();
+    setResults(responseJson)
+    setShowOverlay(true);
     console.log(responseJson);
   };
+
+  console.log('showOverlay:', showOverlay);
 
   return (
     <div>
@@ -62,6 +68,35 @@ function List() {
                 <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
             </button>
         </form>
+        {showOverlay && (
+        <div className="overlay">
+            <div className="overlay-content">
+                <button onClick={() => setShowOverlay(false)}>Close</button>
+                <div className="modal-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {results.map((item) => (
+                            <tr key={item.id}>
+                            <td>
+                                <img src={item.img} alt="Product" width="50" height="50" />
+                            </td>
+                            <td>{item.name}</td>
+                            <td>{item.price}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+        )}
         <table className="table">
           <thead>
             <tr>
