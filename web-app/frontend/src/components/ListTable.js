@@ -23,36 +23,42 @@ function ListTable() {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
-  return (
-    <section>
-      <div style={{ overflow: 'scroll', height: '800px' }}>
-      <div className="container-fluid">
-        <h1 className="mt-5">My Lists</h1>
-        <AddList/>
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">List</th>
-            </tr>
-          </thead>
-          <tbody>
-            {lists.map((list) => (
-              <tr key={list._id}>
-                <td>{`${list.user.fullname} (${list.user.username})`}</td>
-                <td>
-                  <Link to={`/list/${list._id}`} key={list._id}>
-                    {list.list}
-                  </Link>
-                </td>
+  if (isAuthenticated){
+    return (
+      <section>
+        <div style={{ overflow: 'scroll', height: '800px' }}>
+        <div className="container-fluid">
+          <h1 className="mt-5">My Lists</h1>
+          <AddList/>
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">List</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      </div>
-    </section>
+            </thead>
+            <tbody>
+              {lists.map((list) => (
+                <tr key={list._id}>
+                  <td>{`${list.user.fullname} (${list.user.username})`}</td>
+                  <td>
+                    <Link to={`/list/${list._id}`} key={list._id}>
+                      {list.list}
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </section>
+    );
+  }
+  return(
+    <div>
+      Log in. Now.
+    </div>
   );
 }
 
