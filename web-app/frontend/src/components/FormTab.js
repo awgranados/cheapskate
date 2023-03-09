@@ -1,10 +1,36 @@
-import React from 'react';
-import { TextField, Button, Typography, Box } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
+import {
+  Box,
+  Button,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 import './FormTab.css';
+import { useAuth0 } from "@auth0/auth0-react";
 
 function FormTab() {
-  const [title, setTitle] = React.useState('');
-  const [description, setDescription] = React.useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [selectedList, setSelectedList] = useState('');
+  const [lists, setLists] = useState([]);
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchLists();
+    }
+  }, [isAuthenticated]);
+
+  const fetchLists = async () => {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/lists`);
+    const data = await response.json();
+    console.log(data);
+    setLists(data);
+  };
+
+
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -14,32 +40,43 @@ function FormTab() {
     setDescription(event.target.value);
   };
 
+  const handleListChange = (event) => {
+    setSelectedList(event.target.value);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = { title, description };
+    if (!selectedList) {
+      alert('Please select a list');
+      return;
+    }
+    const items = { title, description, selectedList };
+    console.log("Data to be posted: ", items);
     const response = await fetch(`${process.env.REACT_APP_BASE_URL}/postForm`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(items),
     });
     const responseJson = await response.text();
-    console.log(responseJson);
+    setTitle('');
+    setDescription('');
+    setSelectedList('');
   };
   
-
+  
   return (
-    <Box 
+    <Box
       className="form-tab-container"
-      border={1} 
-      borderRadius={4} 
-      borderColor="gray" 
-      p={2} 
+      border={1}
+      borderRadius={4}
+      borderColor="gray"
+      p={2}
       textAlign="left"
     >
       <Typography variant="h5" gutterBottom>
-        Create a new post
+        Add a New Game
       </Typography>
       <form onSubmit={handleSubmit}>
         <TextField
@@ -60,6 +97,29 @@ function FormTab() {
           multiline
           rows={4}
         />
+        <Select
+          labelId="list-select-label"
+          id="list-select"
+          value={selectedList}
+          onChange={handleListChange}
+          displayEmpty
+          className="list-select"
+          fullWidth
+          margin="normal"
+          variant="outlined"
+
+        >
+          <MenuItem value="" enabled>
+            Select List
+          </MenuItem>
+          {lists.map((list) => {
+            return (
+              <MenuItem key={list._id} value={list.list}>
+                {list.list}
+              </MenuItem>
+            );
+          })}
+        </Select>
         <Button type="submit" variant="contained" color="primary">
           Post
         </Button>
@@ -69,5 +129,3 @@ function FormTab() {
 }
 
 export default FormTab;
-
-

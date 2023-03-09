@@ -137,22 +137,26 @@ router.post('/postForm', async (req, res) => {
   console.log(req)
   const gameTitle = req.body.title;
   const gameDesc = req.body.description;
-  console.log(req.body)
-  const user = Schemas.Users;
-  const userId = await user.findOne({ username: 'clifford' }).exec();
+  const selectedList = req.body.selectedList;
+
+  const userId = await Users.findOne({ username: 'clifford' }).exec();
+
 
   const newGame = new Schemas.Games({
-    title: gameTitle,
     desc: gameDesc,
-    user: userId._id
+    title: gameTitle,
+    user: userId._id,
+    list: selectedList
   });
-
+  console.log("GamePosted!!")
   try {
-    await newGame.save((err, newGameResults) => {
-      res.status(200).send('Posted form!');
+    newGame.save((err, newGameResults) => {
+      res.status(200).send(JSON.stringify(newGameResults));
     });
   } catch (err) {
     res.status(500).send(err);
   }
 });
+console.log("End")
 module.exports = router;
+
