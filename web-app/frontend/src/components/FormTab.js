@@ -1,10 +1,12 @@
 import React from 'react';
 import { TextField, Button, Typography, Box } from '@material-ui/core';
+import { useAuth0 } from "@auth0/auth0-react";
 import './FormTab.css';
 
 function FormTab() {
   const [title, setTitle] = React.useState('');
   const [description, setDescription] = React.useState('');
+  const { user, isAuthenticated, isLoading} = useAuth0();
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -29,8 +31,9 @@ function FormTab() {
   };
   
 
-  return (
-    <Box 
+  if (isAuthenticated){
+    return(
+      <Box 
       className="form-tab-container"
       border={1} 
       borderRadius={4} 
@@ -65,6 +68,12 @@ function FormTab() {
         </Button>
       </form>
     </Box>
+    );
+  }
+  return (
+    <div>
+      Log in. Now.
+    </div>
   );
 }
 
