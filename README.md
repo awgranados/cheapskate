@@ -5,7 +5,7 @@
 ### [Deployment Instructions](./team/DEPLOYMENT.md)
 
 ### Project Deployment
-https://t03-cheapskate.onrender.com/
+https://cheapskate-t03.onrender.com
 
 ### Tech Stack
 Javascript, React, Node.js, Express, MongoDB, Firebase, Render
