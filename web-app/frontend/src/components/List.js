@@ -85,7 +85,7 @@ function List() {
                         {results.map((item) => (
                             <tr key={item.id}>
                             <td>
-                                <img src={item.img} alt="Product" width="50" height="50" />
+                                <img src={item.img} alt="Product" width="150" height="100" />
                             </td>
                             <td>{item.name}</td>
                             <td>{item.price}</td>
