@@ -14,10 +14,10 @@ const listSchema = new Schema({
 });
 
 const gameSchema = new Schema({
-  selectedList: { type: Schema.Types.ObjectId, ref: 'lists'},
   user: { type: Schema.Types.ObjectId, ref: 'users', required: true },
   title: { type: String, required: true },
-  desc: { type: String, required: false }
+  desc: { type: String, required: false },
+  selectedList: { type: String, required: true}
 });
 
 

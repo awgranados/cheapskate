@@ -146,7 +146,7 @@ router.post('/postForm', async (req, res) => {
     desc: gameDesc,
     title: gameTitle,
     user: userId._id,
-    list: selectedList
+    selectedList: selectedList
   });
   console.log("GamePosted!!")
   try {

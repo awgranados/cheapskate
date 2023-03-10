@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core';
 import './FormTab.css';
 import { useAuth0 } from "@auth0/auth0-react";
+const { ObjectId } = require('mongoose');
 
 function FormTab() {
   const [title, setTitle] = useState('');
@@ -50,7 +51,7 @@ function FormTab() {
       alert('Please select a list');
       return;
     }
-    const items = { title, description, selectedList };
+    const items = { title: title, desc: description, selectedList: selectedList};
     console.log("Data to be posted: ", items);
     const response = await fetch(`${process.env.REACT_APP_BASE_URL}/postForm`, {
       method: 'POST',
