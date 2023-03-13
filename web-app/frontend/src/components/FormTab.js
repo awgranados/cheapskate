@@ -31,8 +31,6 @@ function FormTab() {
     setLists(data);
   };
 
-
-
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
   };
@@ -51,7 +49,8 @@ function FormTab() {
       alert('Please select a list');
       return;
     }
-    const items = { title: title, desc: description, selectedList: selectedList};
+    const selectedListItem = lists.find(list => list.list === selectedList);
+    const items = { title: title, desc: description, selectedList: selectedListItem._id };
     console.log("Data to be posted: ", items);
     const response = await fetch(`${process.env.REACT_APP_BASE_URL}/postForm`, {
       method: 'POST',
@@ -66,7 +65,7 @@ function FormTab() {
     setSelectedList('');
   };
   
-  
+
   return (
     <Box
       className="form-tab-container"

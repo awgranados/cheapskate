@@ -160,3 +160,21 @@ router.post('/postForm', async (req, res) => {
 console.log("End")
 module.exports = router;
 
+//GET GAMES
+router.get('/games', async (req, res) => {
+  try {
+    const games = await Schemas.Games.find({});
+    res.status(200).send(JSON.stringify(games));
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+router.get('/games/:id', async (req, res) => {
+  try {
+    const games = await Schemas.Games.find({ selectedList: req.params.id }, 'title').exec();
+    res.status(200).send(JSON.stringify(games));
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
