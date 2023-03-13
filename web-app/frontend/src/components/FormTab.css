@@ -28,6 +28,12 @@
 .form-tab-container .MuiButton-root {
   margin-top: 16px;
 }
+
+.form-tab-container .MuiSelect-select {
+  color: white;
+  background-color: #282c34;
+}
+
 .form-tab-container .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
   border-color: white;
 }
@@ -36,14 +42,28 @@
   color: white;
 }
 
-.form-tab-container .MuiInputBase-input {
+.form-tab-container .MuiSelect-root {
+  color: white;
+  border-radius: 4px;
+  padding: 8px;
+  width: 100%;
+}
+
+.form-tab-container .MuiSelect-root:focus {
+  background-color: #282c34;
+}
+
+.form-tab-container .MuiMenu-paper {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.form-tab-container .MuiMenuItem-root {
+  color: black;
+}
+.form-tab-container .MuiSelect-icon {
   color: white;
 }
-
-.form-tab-container .MuiInputBase-root .MuiOutlinedInput-notchedOutline {
-  border-color: white;
-}
-
-.form-tab-container .MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-  border-color: white;
+.form-tab-container .MuiInputBase-input {
+  color: white;
 }

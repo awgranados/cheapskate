@@ -14,10 +14,12 @@ const listSchema = new Schema({
 });
 
 const gameSchema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: 'users' },
+  user: { type: Schema.Types.ObjectId, ref: 'users', required: true },
   title: { type: String, required: true },
-  desc: { type: String, required: false }
+  desc: { type: String, required: false },
+  selectedList: { type: String, required: true}
 });
+
 
 const Users = mongoose.model('users', userSchema, 'users');
 const Lists = mongoose.model('lists', listSchema, 'lists');

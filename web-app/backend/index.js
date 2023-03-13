@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const routesHandler = require('./routes/handler.js');
 const mongoose = require('mongoose');
+
 require('dotenv/config');
 
 const app = express();
@@ -15,7 +16,9 @@ app.post('/addList', routesHandler);
 app.get('/lists', routesHandler);
 app.get('/list/:id', routesHandler)
 app.get('/scrape/:url', routesHandler);
-
+app.get('/games', routesHandler);
+app.get('/games/:listId', routesHandler);
+  
 //DB Connection
 mongoose.connect(process.env.DB_URI, {useNewUrlParser:true, useUnifiedTopology:true})
 .then( () => {
