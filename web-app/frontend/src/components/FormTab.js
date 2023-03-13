@@ -66,8 +66,9 @@ function FormTab() {
   };
   
 
-  return (
-    <Box
+  if (isAuthenticated){
+    return(
+      <Box
       className="form-tab-container"
       border={1}
       borderRadius={4}
@@ -125,6 +126,12 @@ function FormTab() {
         </Button>
       </form>
     </Box>
+    );
+  }
+  return (
+    <div>
+      Log in. Now.
+    </div>
   );
 }
 
