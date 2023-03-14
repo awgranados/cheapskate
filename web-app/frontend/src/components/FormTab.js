@@ -9,7 +9,6 @@ import {
 } from '@material-ui/core';
 import './FormTab.css';
 import { useAuth0 } from "@auth0/auth0-react";
-const { ObjectId } = require('mongoose');
 
 function FormTab() {
   const [title, setTitle] = useState('');
