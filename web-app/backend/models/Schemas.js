@@ -10,13 +10,17 @@ const userSchema = new Schema({
 const listSchema = new Schema({
   list: { type: String, required: true },
   user: { type: Schema.Types.ObjectId, ref: 'users' },
-  games: [ { type: Schema.Types.ObjectId, ref: 'games'} ]
+  games: [{ 
+    game: { type: Schema.Types.ObjectId, ref: 'games'}, 
+    review: {type: Number, default: 0} 
+  }]
 });
 
 const gameSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'users', required: true },
   title: { type: String, required: true },
   desc: { type: String, required: false },
+  img: { type: String, required: false},
   selectedList: { type: String, required: true}
 });
 

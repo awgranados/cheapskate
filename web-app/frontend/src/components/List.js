@@ -17,20 +17,27 @@ function List() {
   const fetchItems = async () => {
     const response = await fetch(`${process.env.REACT_APP_BASE_URL}/list/${encodeURIComponent(id)}`);
     const data = await response.json();
-
-    // Fetch the games from MongoDB with matching `selectedList` value
-    const gamesResponse = await fetch(`${process.env.REACT_APP_BASE_URL}/games`);
-    const gamesData = await gamesResponse.json();
-    const filteredGames = gamesData.filter(game => game.selectedList === id);
-
-    // Map over the filtered games to get only the title field
-    const gameTitles = filteredGames.map(game => game.title);
-    console.log("game", gameTitles)
-    setGameTitles(gameTitles);
-    
-    // Update the `games` state variable with the `filteredGames` array
-    setGames(filteredGames);
+    console.log(data)
+    setGames(data);
   };
+
+  // const fetchItems = async () => {
+  //   const response = await fetch(`${process.env.REACT_APP_BASE_URL}/list/${encodeURIComponent(id)}`);
+  //   const data = await response.json();
+
+  //   // Fetch the games from MongoDB with matching `selectedList` value
+  //   const gamesResponse = await fetch(`${process.env.REACT_APP_BASE_URL}/games`);
+  //   const gamesData = await gamesResponse.json();
+  //   const filteredGames = gamesData.filter(game => game.selectedList === id);
+
+  //   // Map over the filtered games to get only the title field
+  //   const gameTitles = filteredGames.map(game => game.title);
+  //   console.log("game", gameTitles)
+  //   setGameTitles(gameTitles);
+    
+  //   // Update the `games` state variable with the `filteredGames` array
+  //   setGames(filteredGames);
+  // };
   
   const handleNewGameChange = (event) => {
     setNewGame(event.target.value);
@@ -66,8 +73,30 @@ function List() {
 
   console.log('showOverlay:', showOverlay);
 
+  const handleAddGame = (game) => {
+    fetch(`${process.env.REACT_APP_BASE_URL}/addGame/${id}`, {
+      method: "POST",
+      body: JSON.stringify(game),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to add game.");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setGames([...games, data]);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
-    <div>
+    <div >
         <form id = "searchForm" onSubmit = {handleSubmit}>
             <input 
             id = "name" 
@@ -101,6 +130,9 @@ function List() {
                             </td>
                             <td>{item.name}</td>
                             <td>{item.price}</td>
+                            <td>
+                              <button onClick={() => handleAddGame(item)}>Add</button>
+                            </td>
                             </tr>
                         ))}
                     </tbody>
@@ -109,18 +141,24 @@ function List() {
             </div>
         </div>
         )}
-        <table className="table">
+        <table className="table" >
           <thead>
             <tr>
-              <th scope="col">Title</th>
+              <th scope="col">Image</th>
               <th scope="col">Game</th>
+              <th scope="col">Review</th>
             </tr>
           </thead>
           <tbody>
-          {games.map((game) => (
-              <tr key={game._id}>
-                  <td>{`${game.title}`}</td>
-                  <td>{game.desc}</td>
+          {games.map((tuple) => (
+              <tr key={tuple.game._id}>
+                  <td>
+                    {tuple.game.img && (
+                      <img src={tuple.game.img} alt={tuple.game.title} style={{ width: "150px", height: "150px" }} />
+                    )}
+                  </td>
+                  <td>{`${tuple.game.title}`}</td>
+                  <td>{`${tuple.review}`}</td>
               </tr>
           ))}
         </tbody>

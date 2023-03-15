@@ -76,17 +76,28 @@ router.get('/list/:id', async (req, res) => {
   const { id } = req.params;
   const lists = Schemas.Lists;
   const games = Schemas.Games;
-  const userLists = await lists.findById(id)
-    .populate('games')
-    .populate('user')
-    .exec((err, listData) => {
-      if (err) throw err;
-      if (listData) {
-        res.end(JSON.stringify(listData.games));
-      } else {
-        res.end();
-      }
-    });
+  try {
+    const userLists = await lists.findById(id).populate('games.game').populate('user')
+    const tuples = userLists.games.map(tuple => ({
+      game: tuple.game,
+      review: tuple.review
+    }));
+    res.send(tuples);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error')
+  }
+  // const userLists = await lists.findById(id)
+  //   .populate('games.game')
+  //   .populate('user')
+  //   .exec((err, listData) => {
+  //     if (err) throw err;
+  //     if (listData) {
+  //       res.end(JSON.stringify(listData.games));
+  //     } else {
+  //       res.end();
+  //     }
+  //   });
 
 })
 
@@ -184,4 +195,31 @@ router.get('/games/:id', async (req, res) => {
   } catch (err) {
     res.status(500).send(err);
   }
+});
+
+router.post('/addGame/:id', async (req, res) => {
+  console.log(req)
+  const { id } = req.params;
+  const gameTitle = req.body.name;
+  const image = req.body.img;
+
+  const lists = Schemas.Lists;
+  const userList = await lists.findById(id)
+  const userId = await Users.findOne({ username: 'clifford' }).exec();
+
+  const newGame = new Schemas.Games({
+    title: gameTitle,
+    user: userId._id,
+    img: image,
+    selectedList: id
+  });
+  await newGame.save();
+
+  userList.games.push({ game: newGame._id, review: 0 });
+  await userList.save()
+
+
+  const g = await Schemas.Games.findById(newGame._id);
+  const tuple = { game: g, review: 0 };
+  res.send(tuple);
 });
