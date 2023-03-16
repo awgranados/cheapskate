@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { ScrollRestoration, useParams } from 'react-router-dom';
 import "./modal.css"
+import axios from 'axios';
+
+// async function updateScore(gameId, newScore) {
+//   try {
+//     const response = await axios.put(`/updateScore/${gameId}`, {
+//       score: newScore,
+//     });
+//     return response.data;
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
 
 function List() {
   const { id } = useParams();
@@ -9,7 +21,7 @@ function List() {
   const [results, setResults] = useState([]);
   const [newGame, setNewGame] = useState("");
   const [showOverlay, setShowOverlay] = useState(false);
-
+  const [gameScores, setGameScores] = useState({});
   useEffect(() => {
     fetchItems();
   }, []);
@@ -95,6 +107,39 @@ function List() {
       });
   };
 
+  const handleScoreUpdate = (tuple) => {
+    const newScore = gameScores[tuple.game._id];
+    const gameId = tuple.game._id;
+    console.log(newScore);
+    console.log(tuple.game.score);
+    fetch(`${process.env.REACT_APP_BASE_URL}/updateScore/${gameId}`, {
+      method: "PUT",
+      body: JSON.stringify({ score: newScore }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to update score.");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setGameScores(prevState => ({
+          ...prevState,
+          [gameId]: newScore
+        }));
+        tuple.game.score = newScore;
+      })
+      .catch((error) => { 
+        console.error(error);
+      });
+  }
+  
+  
+  
+  
   return (
     <div >
         <form id="search-form" onSubmit={handleSubmit}>
@@ -160,8 +205,22 @@ function List() {
                     )}
                   </td>
                   <td>{`${tuple.game.title}`}</td>
-                  <td>{`${tuple.review}`}</td>
-              </tr>
+                  <td>
+              <select value={gameScores[tuple.game._id] || ''} onChange={(e) => setGameScores((prevScores) => ({ ...prevScores, [tuple.game._id]: e.target.value }))}>
+              <option key={tuple.game.score} value={tuple.game.score}>
+                {tuple.game.score}
+              </option>                  
+                  {[...Array(10).keys()].map((i) => (
+                      <option key={i + 1} value={i + 1}>
+                          {i + 1}
+                      </option>
+                  ))}
+              </select>
+          </td>
+          <td>
+              <button onClick={() => handleScoreUpdate(tuple)}>Save</button>
+          </td>
+          </tr>
           ))}
         </tbody>
         </table>
