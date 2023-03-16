@@ -243,3 +243,13 @@ router.put('/updateScore/:gameId', async (req, res) => {
   }
 });
 
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    await Schemas.Lists.findByIdAndDelete(req.params.id);
+    res.status(200).send("List deleted");
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+

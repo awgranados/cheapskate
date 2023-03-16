@@ -20,6 +20,20 @@ function ListTable() {
     setLists(data);
   };
 
+  const handleDelete = async (listId) => {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/delete/${listId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      fetchLists(); // Reload the list of lists
+    } else {
+      console.error("Failed to delete list");
+    }
+  };
+  
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -45,6 +59,9 @@ function ListTable() {
                     <Link to={`/list/${list._id}`} key={list._id}>
                       {list.list}
                     </Link>
+                  </td>
+                  <td>
+                    <button onClick={() => handleDelete(list._id)}>Delete</button>
                   </td>
                 </tr>
               ))}
