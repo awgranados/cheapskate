@@ -68,7 +68,7 @@ router.get('/scrape/:url', async (req, res, err) => {
   }
   catch{
       console.log(err);
-      res.end();
+      res.status(500).send(err);
   }
 });
 
@@ -143,7 +143,9 @@ router.post('/addList', async (req, res) => {
   });
   try {
     await newList.save((err, newListResults) => {
-      res.status(200).send(JSON.stringify(newListResults));
+      let val = JSON.stringify(newListResults)
+      console.log(val);
+      res.status(200).send(val);
     });
       
   } catch (err) {

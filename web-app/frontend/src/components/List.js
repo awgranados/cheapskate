@@ -58,7 +58,7 @@ function List() {
     const site = "https://store.steampowered.com/search/?term=";
     const url = site.concat("", param);
 
-    console.log(url)
+    console.log(url, " passed from frontend")
     const response = await fetch(`${process.env.REACT_APP_BASE_URL}/scrape/${encodeURIComponent(url)}`, {
       method: 'GET',
       headers: {
