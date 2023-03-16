@@ -12,7 +12,7 @@
   }
   
   .table th {
-    background-color: #00008B;
+    background-color: #486690;
     color: #eee;
     font-weight: bold;
     text-transform: uppercase;
@@ -23,7 +23,7 @@
   }
   
   .table tr:hover {
-    background-color: #00008B;
+    background-color: #4a596e;
     color: #fff;
   }
   

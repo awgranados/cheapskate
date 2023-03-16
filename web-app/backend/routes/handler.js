@@ -229,3 +229,28 @@ router.post('/addGame/:id', async (req, res) => {
   const tuple = { game: g, review: 0 };
   res.send(tuple);
 });
+
+router.put('/updateScore/:gameId', async (req, res) => {
+  console.log(req);
+  try {
+    const game = await Schemas.Games.findByIdAndUpdate(
+      req.params.gameId,
+      { $set: { score: req.body.score } },
+      { new: true }
+    );
+    res.status(200).send(JSON.stringify(game));
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    await Schemas.Lists.findByIdAndDelete(req.params.id);
+    res.status(200).send("List deleted");
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+
