@@ -19,7 +19,7 @@ app.get('/scrape/:url', routesHandler);
 app.get('/games', routesHandler);
 app.get('/games/:listId', routesHandler);
 app.post('/addGame/:id', routesHandler);
-  
+app.put('/updateScore/:gameId', routesHandler);
 //DB Connection
 mongoose.connect(process.env.DB_URI, {useNewUrlParser:true, useUnifiedTopology:true})
 .then( () => {

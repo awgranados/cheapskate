@@ -21,7 +21,8 @@ const gameSchema = new Schema({
   title: { type: String, required: true },
   desc: { type: String, required: false },
   img: { type: String, required: false},
-  selectedList: { type: String, required: true}
+  selectedList: { type: String, required: true},
+  score: { type: Number, required: false, default: 0 }
 });
 
 
