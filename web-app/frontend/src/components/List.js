@@ -131,6 +131,12 @@ function List() {
   return (
     <div >
         <form id="search-form" onSubmit={handleSubmit}>
+    
+    <div>
+      <h1>&nbsp;</h1>
+      <h1>&nbsp;</h1>
+    </div>
+
   <div className="search-box">
     <input
       id="name"
@@ -143,6 +149,11 @@ function List() {
       <i className="fa fa-search" aria-hidden="true"></i>
     </button>
   </div>
+
+  <div>
+      <h6>&nbsp;</h6>
+  </div>
+
 </form>
         {showOverlay && (
         <div className="overlay">
