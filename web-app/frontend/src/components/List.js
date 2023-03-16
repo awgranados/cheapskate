@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollRestoration, useParams } from 'react-router-dom';
 import "./modal.css"
-import axios from 'axios';
-
-// async function updateScore(gameId, newScore) {
-//   try {
-//     const response = await axios.put(`/updateScore/${gameId}`, {
-//       score: newScore,
-//     });
-//     return response.data;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
 
 function List() {
   const { id } = useParams();
