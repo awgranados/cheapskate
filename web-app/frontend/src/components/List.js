@@ -97,18 +97,20 @@ function List() {
 
   return (
     <div >
-        <form id = "searchForm" onSubmit = {handleSubmit}>
-            <input 
-            id = "name" 
-            type="text" 
-            placeholder="Search for your game here."
-            value = {newGame}
-            onChange = {handleNewGameChange}>
-            </input>
-            <button type="submit">
-                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-            </button>
-        </form>
+        <form id="search-form" onSubmit={handleSubmit}>
+  <div className="search-box">
+    <input
+      id="name"
+      type="text"
+      placeholder="Search for your game"
+      value={newGame}
+      onChange={handleNewGameChange}
+    />
+    <button type="submit" id="search-button">
+      <i className="fa fa-search" aria-hidden="true"></i>
+    </button>
+  </div>
+</form>
         {showOverlay && (
         <div className="overlay">
             <div className="overlay-content">
