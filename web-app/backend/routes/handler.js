@@ -5,8 +5,10 @@ const Schemas = require('../models/Schemas.js');
 const { Lists, Users } = require('../models/Schemas');
 
 async function scrapeProduct(url) {
+  console.log("starting to scrape")
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
+  console.log("finished setup awaits")
   await page.goto(url);
   function Game(name, price, link, img) {
       this.name = name
@@ -15,6 +17,7 @@ async function scrapeProduct(url) {
       this.img = img
   }
 
+  console.log("finished page goto")
   var data = []
   games = new Array();
 
@@ -44,7 +47,7 @@ async function scrapeProduct(url) {
 
       games.push(new Game(name, price, link, img))
   }
-
+  console.log("retrieved game data")
   for (i = 0; i < games.length; i++) {
       var dict = {}
       dict['name'] = games[i].name
@@ -53,7 +56,7 @@ async function scrapeProduct(url) {
       dict['img'] = games[i].img
       data[i] = dict
   }
-
+  console.log("done")
   browser.close();
   return data
 }
@@ -68,7 +71,7 @@ router.get('/scrape/:url', async (req, res, err) => {
   }
   catch{
       console.log(err);
-      res.status(500).send(err);
+      res.status(500).send("error");
   }
 });
 
