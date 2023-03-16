@@ -59,6 +59,7 @@ function List() {
     const url = site.concat("", param);
 
     console.log(url, " passed from frontend")
+    
     const response = await fetch(`${process.env.REACT_APP_BASE_URL}/scrape/${encodeURIComponent(url)}`, {
       method: 'GET',
       headers: {
