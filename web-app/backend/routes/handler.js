@@ -268,7 +268,7 @@ router.post("/users", async (req, res) => {
     const userID = req.body.uid;
 
     // Check if user already exists
-    const existingUser = await Schemas.Users.findOne({ name });
+    const existingUser = await Schemas.Users.findOne(name);
     if (existingUser) {
       return res.status(400).json({ msg: 'User already exists' });
     }
