@@ -9,6 +9,7 @@ Lab03 Slack Channel Posts (..._help):
 ---------------------------------------------------------------------------------------------------------------------------------------------
 Current Plan (2/14 - Present):\
 The decision has been made to pivot to a web application instead due to the inability to scrape dynamic websites using the Puppeteer library (the Playwright library did not prove to be useful for our purposes). The MERN tech stack (MongoDB, Express, React, Node.js) will be utilized to accomplish this and the webscraper that works for Steam's website (successfully demonstrated during the MVP presentation) will be integrated into the application.
+
 ---------------------------------------------------------------------------------------------------------------------------------------------
 Previous Plan #2 (1/31 - 2/14):\
 We will continue to use HTML, CSS, and JS for building the Chrome Extension. However, JS will be used instead of Python for the webscraping process because it allows us to display the data on the extension with lesser difficulty. The Playwright API will be used for the purposes of webscraping.
