@@ -23,10 +23,6 @@ function Dropdown() {
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <Link className="dropdown-item" to="/listtable">My Lists</Link>
-<<<<<<< HEAD
-=======
-//                 <a className="dropdown-item" href="#">Placeholder 2</a>
->>>>>>> 573d0ddaf82431999aa1ffe330445ec7caa986bf
                 <div className="dropdown-divider"></div>
                 <LogoutButton/>
             </div>
