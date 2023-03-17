@@ -65,8 +65,10 @@ function List() {
         'Content-Type': 'application/json'
       }
     });
+    console.log(response);
     console.log("test1");
     const responseJson = await response.json();
+    console.log(responseJson);
     console.log("test2");
     setResults(responseJson)
     console.log("test3");
