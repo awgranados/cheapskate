@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import "./ListTable.css";
 import { Link } from "react-router-dom";
 import AddList from "./AddList";
+
 function ListTable() {
   const [lists, setLists] = useState([]);
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -23,39 +24,30 @@ function ListTable() {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  if (isAuthenticated){
+
+  if (isAuthenticated) {
     return (
       <section>
-        <div style={{ overflow: 'scroll', height: '800px' }}>
         <div className="container-fluid">
           <h1 className="mt-5">My Lists</h1>
-          <AddList/>
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">List</th>
-              </tr>
-            </thead>
-            <tbody>
-              {lists.map((list) => (
-                <tr key={list._id}>
-                  <td>{`${list.user.fullname} (${list.user.username})`}</td>
-                  <td>
-                    <Link to={`/list/${list._id}`} key={list._id}>
-                      {list.list}
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+          <AddList />
+          <div className="card-container">
+            {lists.map((list) => (
+              <div className="card" key={list._id}>
+                <Link to={`/list/${list._id}`} key={list._id}>
+                  <h2>{list.list}</h2>
+                  <p>{`${list.user.fullname} (${list.user.username})`}</p>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     );
+    
   }
-  return(
+
+  return (
     <div>
       Log in. Now.
     </div>

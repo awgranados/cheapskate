@@ -1,29 +1,38 @@
-.table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .table td,
-  .table th {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    font-size: 16px;
-  }
-  
-  .table th {
-    background-color: #00008B;
-    color: #eee;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  
-  .table td {
-    color: #eee;
-  }
-  
-  .table tr:hover {
-    background-color: #00008B;
-    color: #fff;
-  }
-  
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: calc(25% - 20px);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 10px #ddd;
+}
+
+.card h2 {
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.card p {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+h1 {
+  margin-top: 120px; /* adjust the value as needed */
+}
+
+
