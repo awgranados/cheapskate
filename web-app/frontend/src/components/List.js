@@ -21,24 +21,6 @@ function List() {
     setGames(data);
   };
 
-  // const fetchItems = async () => {
-  //   const response = await fetch(`${process.env.REACT_APP_BASE_URL}/list/${encodeURIComponent(id)}`);
-  //   const data = await response.json();
-
-  //   // Fetch the games from MongoDB with matching `selectedList` value
-  //   const gamesResponse = await fetch(`${process.env.REACT_APP_BASE_URL}/games`);
-  //   const gamesData = await gamesResponse.json();
-  //   const filteredGames = gamesData.filter(game => game.selectedList === id);
-
-  //   // Map over the filtered games to get only the title field
-  //   const gameTitles = filteredGames.map(game => game.title);
-  //   console.log("game", gameTitles)
-  //   setGameTitles(gameTitles);
-    
-  //   // Update the `games` state variable with the `filteredGames` array
-  //   setGames(filteredGames);
-  // };
-  
   const handleNewGameChange = (event) => {
     setNewGame(event.target.value);
   };
@@ -66,8 +48,13 @@ function List() {
         'Content-Type': 'application/json'
       }
     });
+    console.log(response);
+    console.log("test1");
     const responseJson = await response.json();
+    console.log(responseJson);
+    console.log("test2");
     setResults(responseJson)
+    console.log("test3");
     setShowOverlay(true);
     console.log(responseJson);
   };
@@ -126,6 +113,24 @@ function List() {
       });
   }
   
+  const handleDeleteGame = async (gameId) => {
+    console.log("gameId", gameId)
+    
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/delete/${gameId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      const newGames = games.filter(game => game._id !== gameId);
+      setGames(newGames);
+    } else {
+      console.error("Failed to delete game");
+    }
+  };
+
+
   
   
   
@@ -200,8 +205,11 @@ function List() {
           {games.map((tuple) => (
               <tr key={tuple.game._id}>
                   <td>
-                    {tuple.game.img && (
+                    {tuple.game.img ? (
                       <img src={tuple.game.img} alt={tuple.game.title} style={{ width: "150px", height: "150px" }} />
+                    ) : (
+                      <img src={'https://previews.123rf.com/images/srijianti/srijianti1705/srijianti170519196/78898846-game-text-for-title-or-headline-in-3d-fancy-fun-and-futuristic-style.jpg'} alt={tuple.game.title} style={{ width: "150px", height: "150px" }} />
+
                     )}
                   </td>
                   <td>{`${tuple.game.title}`}</td>
@@ -220,6 +228,9 @@ function List() {
           <td>
               <button onClick={() => handleScoreUpdate(tuple)}>Save</button>
           </td>
+          <td>
+              <button onClick={() => handleDeleteGame(tuple.game._id)}>Delete</button>
+        </td>
           </tr>
           ))}
         </tbody>

@@ -21,7 +21,7 @@ app.get('/games/:listId', routesHandler);
 app.post('/addGame/:id', routesHandler);
 app.put('/updateScore/:gameId', routesHandler);
 app.delete('/delete/:id', routesHandler);
-
+app.delete('/delete/:gameId', routesHandler); 
 //DB Connection
 mongoose.connect(process.env.DB_URI, {useNewUrlParser:true, useUnifiedTopology:true})
 .then( () => {

@@ -7,7 +7,7 @@ const { Lists, Users } = require('../models/Schemas');
 async function scrapeProduct(url) {
   console.log("starting to scrape")
   const browser = await puppeteer.launch();
-  console.log("puppeteer launched")
+  console.log("in between");
   const page = await browser.newPage();
   console.log("finished setup awaits")
   await page.goto(url);
@@ -158,11 +158,12 @@ router.post('/addList', async (req, res) => {
 });
 
 router.post('/postForm', async (req, res) => {
-  console.log(req)
+
   const gameTitle = req.body.title;
   const gameDesc = req.body.description;
   const selectedList = req.body.selectedList;
-
+  const lists = Schemas.Lists;
+  const userList = await lists.findById(selectedList)
   const userId = await Users.findOne({ username: 'clifford' }).exec();
 
 
@@ -172,6 +173,12 @@ router.post('/postForm', async (req, res) => {
     user: userId._id,
     selectedList: selectedList
   });
+
+  await newGame.save();
+
+  userList.games.push({ game: newGame._id, review: 0});
+  await userList.save()
+
   console.log("GamePosted!!")
   try {
     newGame.save((err, newGameResults) => {
@@ -245,6 +252,7 @@ router.put('/updateScore/:gameId', async (req, res) => {
 });
 
 router.delete("/delete/:id", async (req, res) => {
+  console.log("deleting", req.params.id)
   try {
     await Schemas.Lists.findByIdAndDelete(req.params.id);
     res.status(200).send("List deleted");
@@ -253,4 +261,17 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
+router.delete("/delete/:gameId", async (req, res) => {
+  console.log("deleting", req.params.gameId)
+  try {
+    const deletedGame = await Schemas.Games.findByIdAndDelete(req.params.gameId);
+    if (deletedGame) {
+      res.status(200).send("Game deleted");
+    } else {
+      res.status(404).send("Game not found");
+    }
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
 
