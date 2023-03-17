@@ -158,11 +158,12 @@ router.post('/addList', async (req, res) => {
 });
 
 router.post('/postForm', async (req, res) => {
-  console.log(req)
+
   const gameTitle = req.body.title;
   const gameDesc = req.body.description;
   const selectedList = req.body.selectedList;
-
+  const lists = Schemas.Lists;
+  const userList = await lists.findById(selectedList)
   const userId = await Users.findOne({ username: 'clifford' }).exec();
 
 
@@ -172,6 +173,12 @@ router.post('/postForm', async (req, res) => {
     user: userId._id,
     selectedList: selectedList
   });
+
+  await newGame.save();
+
+  userList.games.push({ game: newGame._id, review: 0});
+  await userList.save()
+
   console.log("GamePosted!!")
   try {
     newGame.save((err, newGameResults) => {
