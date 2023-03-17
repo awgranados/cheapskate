@@ -21,24 +21,6 @@ function List() {
     setGames(data);
   };
 
-  // const fetchItems = async () => {
-  //   const response = await fetch(`${process.env.REACT_APP_BASE_URL}/list/${encodeURIComponent(id)}`);
-  //   const data = await response.json();
-
-  //   // Fetch the games from MongoDB with matching `selectedList` value
-  //   const gamesResponse = await fetch(`${process.env.REACT_APP_BASE_URL}/games`);
-  //   const gamesData = await gamesResponse.json();
-  //   const filteredGames = gamesData.filter(game => game.selectedList === id);
-
-  //   // Map over the filtered games to get only the title field
-  //   const gameTitles = filteredGames.map(game => game.title);
-  //   console.log("game", gameTitles)
-  //   setGameTitles(gameTitles);
-    
-  //   // Update the `games` state variable with the `filteredGames` array
-  //   setGames(filteredGames);
-  // };
-  
   const handleNewGameChange = (event) => {
     setNewGame(event.target.value);
   };
@@ -130,6 +112,24 @@ function List() {
       });
   }
   
+  const handleDeleteGame = async (gameId) => {
+    console.log("gameId", gameId)
+    
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/delete/${gameId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      const newGames = games.filter(game => game._id !== gameId);
+      setGames(newGames);
+    } else {
+      console.error("Failed to delete game");
+    }
+  };
+
+
   
   
   
@@ -227,6 +227,9 @@ function List() {
           <td>
               <button onClick={() => handleScoreUpdate(tuple)}>Save</button>
           </td>
+          <td>
+              <button onClick={() => handleDeleteGame(tuple.game._id)}>Delete</button>
+        </td>
           </tr>
           ))}
         </tbody>

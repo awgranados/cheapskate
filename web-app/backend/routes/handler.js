@@ -252,6 +252,7 @@ router.put('/updateScore/:gameId', async (req, res) => {
 });
 
 router.delete("/delete/:id", async (req, res) => {
+  console.log("deleting", req.params.id)
   try {
     await Schemas.Lists.findByIdAndDelete(req.params.id);
     res.status(200).send("List deleted");
@@ -260,4 +261,17 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
+router.delete("/delete/:gameId", async (req, res) => {
+  console.log("deleting", req.params.gameId)
+  try {
+    const deletedGame = await Schemas.Games.findByIdAndDelete(req.params.gameId);
+    if (deletedGame) {
+      res.status(200).send("Game deleted");
+    } else {
+      res.status(404).send("Game not found");
+    }
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
 
