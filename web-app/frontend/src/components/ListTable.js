@@ -21,6 +21,20 @@ function ListTable() {
     setLists(data);
   };
 
+  const handleDelete = async (listId) => {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/delete/${listId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      fetchLists(); // Reload the list of lists
+    } else {
+      console.error("Failed to delete list");
+    }
+  };
+  
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -30,6 +44,7 @@ function ListTable() {
       <section>
         <div className="container-fluid">
           <h1 className="mt-5">My Lists</h1>
+<<<<<<< HEAD
           <AddList />
           <div className="card-container">
             {lists.map((list) => (
@@ -41,6 +56,33 @@ function ListTable() {
               </div>
             ))}
           </div>
+=======
+          <AddList/>
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">List</th>
+              </tr>
+            </thead>
+            <tbody>
+              {lists.map((list) => (
+                <tr key={list._id}>
+                  <td>{`${list.user.fullname} (${list.user.username})`}</td>
+                  <td>
+                    <Link to={`/list/${list._id}`} key={list._id}>
+                      {list.list}
+                    </Link>
+                  </td>
+                  <td>
+                    <button onClick={() => handleDelete(list._id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+>>>>>>> 573d0ddaf82431999aa1ffe330445ec7caa986bf
         </div>
       </section>
     );

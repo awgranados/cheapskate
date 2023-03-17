@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { ScrollRestoration, useParams } from 'react-router-dom';
 import "./modal.css"
 
 function List() {
@@ -9,7 +9,7 @@ function List() {
   const [results, setResults] = useState([]);
   const [newGame, setNewGame] = useState("");
   const [showOverlay, setShowOverlay] = useState(false);
-
+  const [gameScores, setGameScores] = useState({});
   useEffect(() => {
     fetchItems();
   }, []);
@@ -58,15 +58,20 @@ function List() {
     const site = "https://store.steampowered.com/search/?term=";
     const url = site.concat("", param);
 
-    console.log(url)
+    console.log(url, " passed from frontend")
     const response = await fetch(`${process.env.REACT_APP_BASE_URL}/scrape/${encodeURIComponent(url)}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
     });
+    console.log(response);
+    console.log("test1");
     const responseJson = await response.json();
+    console.log(responseJson);
+    console.log("test2");
     setResults(responseJson)
+    console.log("test3");
     setShowOverlay(true);
     console.log(responseJson);
   };
@@ -95,9 +100,48 @@ function List() {
       });
   };
 
+  const handleScoreUpdate = (tuple) => {
+    const newScore = gameScores[tuple.game._id];
+    const gameId = tuple.game._id;
+    console.log(newScore);
+    console.log(tuple.game.score);
+    fetch(`${process.env.REACT_APP_BASE_URL}/updateScore/${gameId}`, {
+      method: "PUT",
+      body: JSON.stringify({ score: newScore }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to update score.");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setGameScores(prevState => ({
+          ...prevState,
+          [gameId]: newScore
+        }));
+        tuple.game.score = newScore;
+      })
+      .catch((error) => { 
+        console.error(error);
+      });
+  }
+  
+  
+  
+  
   return (
     <div >
         <form id="search-form" onSubmit={handleSubmit}>
+    
+    <div>
+      <h1>&nbsp;</h1>
+      <h1>&nbsp;</h1>
+    </div>
+
   <div className="search-box">
     <input
       id="name"
@@ -110,6 +154,11 @@ function List() {
       <i className="fa fa-search" aria-hidden="true"></i>
     </button>
   </div>
+
+  <div>
+      <h6>&nbsp;</h6>
+  </div>
+
 </form>
         {showOverlay && (
         <div className="overlay">
@@ -160,8 +209,22 @@ function List() {
                     )}
                   </td>
                   <td>{`${tuple.game.title}`}</td>
-                  <td>{`${tuple.review}`}</td>
-              </tr>
+                  <td>
+              <select value={gameScores[tuple.game._id] || ''} onChange={(e) => setGameScores((prevScores) => ({ ...prevScores, [tuple.game._id]: e.target.value }))}>
+              <option key={tuple.game.score} value={tuple.game.score}>
+                {tuple.game.score}
+              </option>                  
+                  {[...Array(10).keys()].map((i) => (
+                      <option key={i + 1} value={i + 1}>
+                          {i + 1}
+                      </option>
+                  ))}
+              </select>
+          </td>
+          <td>
+              <button onClick={() => handleScoreUpdate(tuple)}>Save</button>
+          </td>
+          </tr>
           ))}
         </tbody>
         </table>

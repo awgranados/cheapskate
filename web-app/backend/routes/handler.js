@@ -5,8 +5,11 @@ const Schemas = require('../models/Schemas.js');
 const { Lists, Users } = require('../models/Schemas');
 
 async function scrapeProduct(url) {
+  console.log("starting to scrape")
   const browser = await puppeteer.launch();
+  console.log("in between");
   const page = await browser.newPage();
+  console.log("finished setup awaits")
   await page.goto(url);
   function Game(name, price, link, img) {
       this.name = name
@@ -15,6 +18,7 @@ async function scrapeProduct(url) {
       this.img = img
   }
 
+  console.log("finished page goto")
   var data = []
   games = new Array();
 
@@ -44,7 +48,7 @@ async function scrapeProduct(url) {
 
       games.push(new Game(name, price, link, img))
   }
-
+  console.log("retrieved game data")
   for (i = 0; i < games.length; i++) {
       var dict = {}
       dict['name'] = games[i].name
@@ -53,7 +57,7 @@ async function scrapeProduct(url) {
       dict['img'] = games[i].img
       data[i] = dict
   }
-
+  console.log("done")
   browser.close();
   return data
 }
@@ -68,7 +72,7 @@ router.get('/scrape/:url', async (req, res, err) => {
   }
   catch{
       console.log(err);
-      res.end();
+      res.status(500).send("error");
   }
 });
 
@@ -143,7 +147,9 @@ router.post('/addList', async (req, res) => {
   });
   try {
     await newList.save((err, newListResults) => {
-      res.status(200).send(JSON.stringify(newListResults));
+      let val = JSON.stringify(newListResults)
+      console.log(val);
+      res.status(200).send(val);
     });
       
   } catch (err) {
@@ -223,3 +229,28 @@ router.post('/addGame/:id', async (req, res) => {
   const tuple = { game: g, review: 0 };
   res.send(tuple);
 });
+
+router.put('/updateScore/:gameId', async (req, res) => {
+  console.log(req);
+  try {
+    const game = await Schemas.Games.findByIdAndUpdate(
+      req.params.gameId,
+      { $set: { score: req.body.score } },
+      { new: true }
+    );
+    res.status(200).send(JSON.stringify(game));
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    await Schemas.Lists.findByIdAndDelete(req.params.id);
+    res.status(200).send("List deleted");
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+
