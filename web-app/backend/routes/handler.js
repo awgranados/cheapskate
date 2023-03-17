@@ -261,3 +261,30 @@ router.delete("/delete/:id", async (req, res) => {
 });
 
 
+// Create a new user
+router.post("/users", async (req, res) => {
+  try {
+    const name = req.body.email;
+    const userID = req.body.uid;
+
+    // Check if user already exists
+    const existingUser = await Schemas.Users.findOne({ name });
+    if (existingUser) {
+      return res.status(400).json({ msg: 'User already exists' });
+    }
+
+    // Create new user object
+    const newUser = new Schemas.Users({
+      email: name,
+      uid: userID
+    });
+
+    // Save new user to database
+    await newUser.save();
+
+    res.status(201).json(newUser);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: 'Server error' });
+  }
+});
