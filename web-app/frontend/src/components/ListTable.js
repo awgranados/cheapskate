@@ -42,7 +42,7 @@ function ListTable() {
                 <tr key={list._id}>
                   <td>{`${list.user.fullname} (${list.user.username})`}</td>
                   <td>
-                    <Link to={`/list/${list._id}`} key={list._id}>
+                    <Link to={`/header/${list._id}`} key={list._id}>
                       {list.list}
                     </Link>
                   </td>

@@ -33,6 +33,9 @@ function Nav() {
               <Link to="/listtable" className="nav-item nav-link">
                 My Lists
               </Link>
+              <Link to="/header" className="nav-item nav-link">
+                Header
+              </Link>
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item active">
                   <LoginButton />
