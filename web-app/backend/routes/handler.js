@@ -7,6 +7,7 @@ const { Lists, Users } = require('../models/Schemas');
 async function scrapeProduct(url) {
   console.log("starting to scrape")
   const browser = await puppeteer.launch();
+  console.log("in between");
   const page = await browser.newPage();
   console.log("finished setup awaits")
   await page.goto(url);
