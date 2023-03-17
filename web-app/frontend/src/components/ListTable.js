@@ -44,19 +44,6 @@ function ListTable() {
       <section>
         <div className="container-fluid">
           <h1 className="mt-5">My Lists</h1>
-<<<<<<< HEAD
-          <AddList />
-          <div className="card-container">
-            {lists.map((list) => (
-              <div className="card" key={list._id}>
-                <Link to={`/list/${list._id}`} key={list._id}>
-                  <h2>{list.list}</h2>
-                  <p>{`${list.user.fullname} (${list.user.username})`}</p>
-                </Link>
-              </div>
-            ))}
-          </div>
-=======
           <AddList/>
           <table className="table">
             <thead>
@@ -81,8 +68,6 @@ function ListTable() {
               ))}
             </tbody>
           </table>
-        </div>
->>>>>>> 573d0ddaf82431999aa1ffe330445ec7caa986bf
         </div>
       </section>
     );
