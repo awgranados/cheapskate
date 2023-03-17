@@ -65,8 +65,11 @@ function List() {
         'Content-Type': 'application/json'
       }
     });
+    console.log("test1");
     const responseJson = await response.json();
+    console.log("test2");
     setResults(responseJson)
+    console.log("test3");
     setShowOverlay(true);
     console.log(responseJson);
   };
