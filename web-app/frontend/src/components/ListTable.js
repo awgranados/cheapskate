@@ -88,7 +88,7 @@ function ListTable() {
               <div className="card" key={list._id}>
                 <Link to={`/list/${list._id}`} key={list._id}>
                   <h2>{list.list}</h2>
-                  <p>{`${list.user.username}`}</p>
+                  <p>{`${user.name.split("@")[0]}`}</p>
                 </Link>
                 <button className="delete-button" onClick={() => handleDelete(list._id)}>
                   <span className="delete-button-text">x</span>
