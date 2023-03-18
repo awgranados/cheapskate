@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./ListTable.css";
 import { Link } from "react-router-dom";
-import AddList from "./AddList";
 
 function ListTable() {
+  const [listInput, setListInput] = useState("");
   const [lists, setLists] = useState([]);
   const { user, isAuthenticated, isLoading } = useAuth0();
   const userID = user.sub.split("|")[1];
@@ -36,16 +36,53 @@ function ListTable() {
     }
   };
   
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  const handleListInputChange = (event) => {
+    setListInput(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const data = { listInput };
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/addList/${encodeURIComponent(userID)}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const responseJson = await response.json();
+    setLists([...lists, responseJson]);
+    console.log(responseJson);
+  };
 
   if (isAuthenticated) {
     return (
       <section>
         <div className="container-fluid">
           <h1 className="mt-5">My Lists</h1>
-          <AddList />
+          <section>
+            <div className="container-fluid">
+              <h1 className="mt-5">Lists</h1>
+              <form onSubmit={handleSubmit}>
+                <div className="input-group justify-content-center">
+                  <div className="input-group-prepend">
+                    <input
+                      type="text"
+                      name="listInput"
+                      className="form-control"
+                      value={listInput}
+                      onChange={handleListInputChange}
+                    />
+                    <input
+                      type="submit"
+                      value="Add"
+                      className="btn btn-primary mb-2"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </section>
           <div className="card-container">
             {lists.map((list) => (
               <div className="card" key={list._id}>
