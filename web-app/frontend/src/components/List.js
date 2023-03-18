@@ -10,6 +10,7 @@ function List() {
   const [newGame, setNewGame] = useState("");
   const [showOverlay, setShowOverlay] = useState(false);
   const [gameScores, setGameScores] = useState({});
+  
   useEffect(() => {
     fetchItems();
   }, []);

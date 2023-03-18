@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function AddList() {
   const [listInput, setListInput] = useState("");
   const [items, setItems] = useState([]);
+  const { user } = useAuth0();
+  const userID = user.sub.split("|")[1];
 
   useEffect(() => {
     fetchItems();
   }, []);
 
   const fetchItems = async () => {
-    const data = await fetch(`${process.env.REACT_APP_BASE_URL}/lists`);
+    const data = await fetch(`${process.env.REACT_APP_BASE_URL}/lists/${encodeURIComponent(userID)}`);
     const items = await data.json();
     console.log(items)
     setItems(items);
@@ -22,7 +25,7 @@ function AddList() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = { listInput };
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/addList`, {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/addList/${encodeURIComponent(userID)}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
