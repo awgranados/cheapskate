@@ -91,16 +91,6 @@ function FormTab() {
           fullWidth
           margin="normal"
         />
-        <TextField
-          label="Description (optional)"
-          value={description}
-          onChange={handleDescriptionChange}
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          multiline
-          rows={4}
-        />
         <Select
           labelId="list-select-label"
           id="list-select"

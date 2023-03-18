@@ -180,7 +180,7 @@ function List() {
                         {results.map((item) => (
                             <tr key={item.id}>
                             <td>
-                                <img src={item.img} alt="Product" width="150" height="100" />
+                                <img src={item.img} alt="Product" width="200" height="250" />
                             </td>
                             <td>{item.name}</td>
                             <td>{item.price == "Free" ? "Free" : item.price == "" ? "N/A" : "$"+item.price.split("$")[1]}</td>

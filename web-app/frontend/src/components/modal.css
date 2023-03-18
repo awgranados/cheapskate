@@ -5,47 +5,89 @@
     width: 100%;
     height: 100%;
     background-color: #282c34;
-    z-index: 1;
+    z-index: 1000;
   }
   
-.overlay-content {
-    max-height: 80vh;
-    overflow-y: auto;
-    position: relative;
+  .overlay-content {
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #333169;
-    padding: 20px;
-    border-radius: 5px;
-    width: 80%;
+    background-color: #282c36;
+    border-radius: 10px;
     max-width: 800px;
-    padding-bottom: 50px;
-}
-
-.modal-table {
-    display: table;
+    max-height: 80vh;
+    width: 80%;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+  }
+  
+  .modal-table {
     width: 100%;
     border-collapse: collapse;
-}
-
-.modal-table-row {
-    display: table-row; 
-}
-
-.modal-table-header {
-    display: table-header-group;
-}
-
-.modal-table-cell {
-    display: table-cell;
-    padding: 8px;
-    border: 1px solid rgb(48, 48, 55);
-}
-
-.modal-table-cell img {
+  }
+  
+  .modal-table thead tr th {
+    text-align: left;
+    font-weight: 600;
+    padding: 15px;
+    border-bottom: 2px solid #282c34;
+  }
+  
+  .modal-table tbody tr td {
+    padding: 15px;
+    border-bottom: 1px solid #282c34;
+  }
+  
+  .modal-table tbody tr td img {
+    height: auto;
+    display: block;
+  }
+  
+  .modal-table tbody tr td:nth-child(2) {
+    width: 40%;
+  }
+  
+  .modal-table tbody tr td:nth-child(3),
+  .modal-table tbody tr td:nth-child(4) {
+    width: 15%;
+  }
+  
+  .modal-table tbody tr td:nth-child(5) {
+    width: 10%;
+    text-align: center;
+  }
+  
+  .modal-table tbody tr td button {
+    background-color: #1a73e8;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+  }
+  
+  .modal-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .modal-close-button:hover {
+    color: #1a73e8;
+  }
+  .modal-table-cell img {
     max-width: 100%;
     height: auto;
     display: block;
-}
+    width: 300px; 
+    height: 225px; 
+  }
   
