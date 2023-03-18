@@ -21,24 +21,6 @@ function List() {
     console.log(data)
     setGames(data);
   };
-
-  // const fetchItems = async () => {
-  //   const response = await fetch(`${process.env.REACT_APP_BASE_URL}/list/${encodeURIComponent(id)}`);
-  //   const data = await response.json();
-
-  //   // Fetch the games from MongoDB with matching `selectedList` value
-  //   const gamesResponse = await fetch(`${process.env.REACT_APP_BASE_URL}/games`);
-  //   const gamesData = await gamesResponse.json();
-  //   const filteredGames = gamesData.filter(game => game.selectedList === id);
-
-  //   // Map over the filtered games to get only the title field
-  //   const gameTitles = filteredGames.map(game => game.title);
-  //   console.log("game", gameTitles)
-  //   setGameTitles(gameTitles);
-    
-  //   // Update the `games` state variable with the `filteredGames` array
-  //   setGames(filteredGames);
-  // };
   
   const handleNewGameChange = (event) => {
     setNewGame(event.target.value);
