@@ -15,6 +15,7 @@
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
+  position: relative; /* add this to set position for absolute elements */
 }
 
 .card:hover {
@@ -29,6 +30,23 @@
 .card p {
   font-size: 16px;
   margin-bottom: 0;
+}
+
+.delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: #007bff;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+.delete-button:hover {
+  transform: scale(1.2);
 }
 
 h1 {

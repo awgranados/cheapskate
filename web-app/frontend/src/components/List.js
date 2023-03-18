@@ -172,6 +172,8 @@ function List() {
                             <th>Image</th>
                             <th>Title</th>
                             <th>Price</th>
+                            <th>Disc.</th>
+                            <th>Add</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -181,7 +183,8 @@ function List() {
                                 <img src={item.img} alt="Product" width="150" height="100" />
                             </td>
                             <td>{item.name}</td>
-                            <td>{item.price}</td>
+                            <td>{item.price == "Free" ? "Free" : item.price == "" ? "N/A" : "$"+item.price.split("$")[1]}</td>
+                            <td>{item.price.split("$")[2] ? "$"+item.price.split("$")[2]: " "}</td>
                             <td>
                               <button onClick={() => handleAddGame(item)}>Add</button>
                             </td>
@@ -205,8 +208,11 @@ function List() {
           {games.map((tuple) => (
               <tr key={tuple.game._id}>
                   <td>
-                    {tuple.game.img && (
+                    {tuple.game.img ? (
                       <img src={tuple.game.img} alt={tuple.game.title} style={{ width: "150px", height: "150px" }} />
+                    ) : (
+                      <img src={'https://previews.123rf.com/images/srijianti/srijianti1705/srijianti170519196/78898846-game-text-for-title-or-headline-in-3d-fancy-fun-and-futuristic-style.jpg'} alt={tuple.game.title} style={{ width: "150px", height: "150px" }} />
+
                     )}
                   </td>
                   <td>{`${tuple.game.title}`}</td>

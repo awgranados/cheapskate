@@ -185,8 +185,8 @@ router.post('/postForm/:userid', async (req, res) => {
   const selectedList = req.body.selectedList;
   const lists = Schemas.Lists;
   const userList = await lists.findById(selectedList)
-  const userId = await Users.findOne({ uid: userid }).exec();
 
+  const userId = await Users.findOne({ uid: userid }).exec();
 
   const newGame = new Schemas.Games({
     desc: gameDesc,
