@@ -2,7 +2,7 @@
 
 ## Deployment Details
 
-### [Deployment Instructions](./team/DEPLOYMENT.md)
+### [Deployment Instructions](./docs/DEPLOY.md)
 
 ### Tech Stack
 Javascript, React, Node.js, Express, MongoDB, Firebase, Render
