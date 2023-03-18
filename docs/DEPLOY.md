@@ -1,3 +1,6 @@
+
+# To deploy locally 
+
 ## Prerequisites
 * git v2.24+
 * npm v8+
@@ -13,13 +16,8 @@
 * Install npm: npm install
 * Install Node.js: https://nodejs.org/en/download/
 
-1. Go to chrome://extensions.
-2. Enable developer mode.
-3. Click the "Load Unpacked" button at the top left of your screen. 
-4. Select the project-t03-cheapskate/Extension folder. 
+## Running the Web App
+5. cd into the backend folder in one terminal and type the command ```Node index.js```
+6. cd into the frontend folder in another terminal and type the command ```npm start```
 
-## Running the Extension
-5. In the command line, execute: cd steam-scraper (make sure you are in the project-t03-cheapskate directory)
-6. Run the command: node app.js
-
-The Chrome extension is now ready to use.
+The Web App is now ready to use.
