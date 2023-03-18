@@ -16,6 +16,10 @@ function FormTab() {
   const [selectedList, setSelectedList] = useState('');
   const [lists, setLists] = useState([]);
   const { user, isAuthenticated, isLoading } = useAuth0();
+  
+  const userID = user.sub.split("|")[1];
+  // const userID = "63f009188b72c75ea17fee76";
+  console.log(userID);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -24,7 +28,7 @@ function FormTab() {
   }, [isAuthenticated]);
 
   const fetchLists = async () => {
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/lists`);
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/lists/${encodeURIComponent(userID)}`);
     const data = await response.json();
     console.log(data);
     setLists(data);
@@ -51,7 +55,7 @@ function FormTab() {
     const selectedListItem = lists.find(list => list.list === selectedList);
     const items = { title: title, desc: description, selectedList: selectedListItem._id };
     console.log("Data to be posted: ", items);
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/postForm`, {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/postForm/${encodeURIComponent(userID)}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

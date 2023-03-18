@@ -80,6 +80,7 @@ router.get('/list/:id', async (req, res) => {
   const { id } = req.params;
   const lists = Schemas.Lists;
   const games = Schemas.Games;
+
   try {
     const userLists = await lists.findById(id).populate('games.game').populate('user')
     const tuples = userLists.games.map(tuple => ({
@@ -121,11 +122,29 @@ router.get('/addUser', async(req, res) => {
   }
 });
 
-router.get('/lists', async (req, res) => {
-  const lists = Schemas.Lists;
+// router.get('/lists', async (req, res) => {
+//   const lists = Schemas.Lists;
   
-  const userLists = await lists.find({})
-    .populate('user')
+//   const userLists = await lists.find({})
+//     .populate('user')
+//     .exec((err, listData) => {
+//       if (err) throw err;
+//       if (listData) {
+//         res.end(JSON.stringify(listData));
+//       } else {
+//         res.end();
+//       }
+//     });
+// });
+
+router.get('/lists/:userid', async (req, res) => {
+  const lists = Schemas.Lists;
+  const { userid } = req.params;
+  const user = await Schemas.Users.findOne({ uid: userid }).exec();
+  // console.log(userid)
+  // console.log(user.id);
+  
+  const userLists = await lists.find({ user: user.id })
     .exec((err, listData) => {
       if (err) throw err;
       if (listData) {
@@ -136,10 +155,11 @@ router.get('/lists', async (req, res) => {
     });
 });
 
-router.post('/addList', async (req, res) => {
+router.post('/addList/:userid', async (req, res) => {
+  const { userid } = req.params;
   const listTitle = req.body.listInput
-
-  const user = await Users.findOne({ username: 'clifford' }).exec();
+  console.log("adding")
+  const user = await Schemas.Users.findOne({ uid: userid }).exec();
 
   const newList = new Schemas.Lists({
     list: listTitle,
@@ -157,15 +177,16 @@ router.post('/addList', async (req, res) => {
   }
 });
 
-router.post('/postForm', async (req, res) => {
+router.post('/postForm/:userid', async (req, res) => {
+  const { userid } = req.params;
 
   const gameTitle = req.body.title;
   const gameDesc = req.body.description;
   const selectedList = req.body.selectedList;
   const lists = Schemas.Lists;
   const userList = await lists.findById(selectedList)
-  const userId = await Users.findOne({ username: 'clifford' }).exec();
 
+  const userId = await Users.findOne({ uid: userid }).exec();
 
   const newGame = new Schemas.Games({
     desc: gameDesc,

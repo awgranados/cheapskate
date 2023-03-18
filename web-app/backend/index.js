@@ -11,9 +11,9 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 // app.use('/', routesHandler);
 app.use(cors());
-app.post('/postForm', routesHandler);
-app.post('/addList', routesHandler);
-app.get('/lists', routesHandler);
+app.post('/postForm/:userid', routesHandler);
+app.post('/addList/:userid', routesHandler);
+app.get('/lists/:userid', routesHandler);
 app.get('/list/:id', routesHandler)
 app.get('/scrape/:url', routesHandler);
 app.get('/games', routesHandler);

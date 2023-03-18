@@ -7,6 +7,7 @@ import AddList from "./AddList";
 function ListTable() {
   const [lists, setLists] = useState([]);
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const userID = user.sub.split("|")[1];
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -15,7 +16,7 @@ function ListTable() {
   }, [isAuthenticated]);
 
   const fetchLists = async () => {
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/lists`);
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/lists/${encodeURIComponent(userID)}`);
     const data = await response.json();
     console.log(data);
     setLists(data);
