@@ -174,7 +174,7 @@ function List() {
           </div>
       </div>
       )}
-      <table className="table" >
+      <table className="modal-table" >
         <thead>
           <tr>
             <th scope="col">Image</th>
