@@ -13,7 +13,7 @@ When we switched over to the web app, I helped get the component to add games, f
 
 Added additonal features to the form tab that allowed users to select which list they want to add their game to and linked the endpoints so that they could add games not on steam directly to their lists.
 
-Worked on creating a delete feature to remove games for lists with other team members although wasn't able to get that done in time in the end.
+Worked on creating a delete feature to remove games for lists with other team members although wasn't able to get that done in time in the end due to MongoDB's api bugging out.
 
 Finally, I made many UI improvements and fixes to the app, using material ui on the list table component, form tab component, and dropdown, as well as the steam scraper overlay and table for each specific list. 
 
