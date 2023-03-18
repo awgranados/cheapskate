@@ -11,10 +11,11 @@
 
 ## Installation Steps
 * Install/Update git
-* Clone repo: git clone git@github.com:ucsb-cs148-w23/project-t03-cheapskate.git
-* Enter repo: cd project-t03-cheapskate
-* Install npm: npm install
+* Clone repo: ```git clone git@github.com:ucsb-cs148-w23/project-t03-cheapskate.git```
+* Enter repo: ```cd project-t03-cheapskate```
+* Install npm: ```npm install```
 * Install Node.js: https://nodejs.org/en/download/
+* Install cors: ```npm install cors```
 
 ## Running the Web App
 5. cd into the backend folder in one terminal and type the command ```Node index.js```
