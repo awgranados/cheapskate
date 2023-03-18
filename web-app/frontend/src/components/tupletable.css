@@ -2,7 +2,7 @@
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 20px;
-    font-family: "Lucida Console", Monaco, monospace;
+    color: #f0ffff;
   }
   
   .tupletable th,
@@ -10,13 +10,17 @@
     padding: 8px;
     text-align: left;
     border: 1px solid #ccc;
+    font-size: 25px;
+    color: #f0ffff;
+
   }
   
   .tupletable th {
     background-color: #282c34;
     font-weight: bold;
     text-transform: uppercase;
-    color: white;
+    color: #faebd7;
+    color: #f0ffff;
   }
   
   .tupletable__search {
@@ -29,7 +33,7 @@
     flex: 1;
     padding: 8px;
     margin-right: 8px;
-    font-family: "Lucida Console", Monaco, monospace;
+    
   }
   
   .tupletable__search button {
@@ -39,7 +43,7 @@
     color: white;
     border-radius: 4px;
     cursor: pointer;
-    font-family: "Lucida Console", Monaco, monospace;
+    
   }
   
   .tupletable__pagination {
@@ -56,57 +60,57 @@
     transition: background-color .3s;
     border: 1px solid #ddd;
     margin: 0 4px;
-    font-family: "Lucida Console", Monaco, monospace;
+    
   }
   
   .tupletable__pagination a.active {
     background-color: #1a73e8;
     color: white;
     border: 1px solid #1a73e8;
-    font-family: "Lucida Console", Monaco, monospace;
+    
   }
   
   .tupletable__pagination a:hover:not(.active) {
     background-color: #ddd;
-    font-family: "Lucida Console", Monaco, monospace;
+    
   }
   
   
   .tupletable td:nth-child(1) {
     width: 10%;
-    font-family: "Lucida Console", Monaco, monospace;
+    
   }
   
   .tupletable td:nth-child(2) {
     width: 50%;
-    font-family: "Lucida Console", Monaco, monospace;
+    
   }
   
   .tupletable td:nth-child(3) {
     width: 5%;
     text-align: center;
-    font-family: "Lucida Console", Monaco, monospace;
+    
   }
   .tupletable td:nth-child(4) {
     width: 5%;
     text-align: center;
-    font-family: "Lucida Console", Monaco, monospace;
+    
   }
   
   .tupletable button {
     padding: 8px 16px;
     background-color: #1a73e8;
     border: none;
-    color: white;
+    color: #fff;;
     border-radius: 4px;
     cursor: pointer;
-    font-family: "Lucida Console", Monaco, monospace;
+    
   }
   
   .tupletable td:hover {
     background-color: #4682b4;
     cursor: pointer;
-    color: white;
-    font-family: "Lucida Console", Monaco, monospace;
+    color: #4169e1;;
+    
   }
   
