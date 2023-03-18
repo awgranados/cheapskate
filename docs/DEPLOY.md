@@ -25,4 +25,3 @@ The Web App is now ready to use.
 ## Disclaimer
 If there are still any missing packages just run ```npm install "package name“ ``` 
 
-You may need to 
