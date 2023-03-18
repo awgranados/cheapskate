@@ -187,7 +187,7 @@ function List() {
             <tr key={tuple.game._id}>
                 <td>
                   {tuple.game.img ? (
-                    <img src={tuple.game.img} alt={tuple.game.title} style={{ width: "150px", height: "150px" }} />
+                    <img src={tuple.game.img} alt={tuple.game.title} style={{ width: "240px", height: "90px" }} />
                   ) : (
                     <img src={'https://previews.123rf.com/images/srijianti/srijianti1705/srijianti170519196/78898846-game-text-for-title-or-headline-in-3d-fancy-fun-and-futuristic-style.jpg'} alt={tuple.game.title} style={{ width: "150px", height: "150px" }} />
 
