@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollRestoration, useParams } from 'react-router-dom';
 import "./modal.css"
-import "./tupletable.css"; 
+
 function List() {
   const { id } = useParams();
   const [games, setGames] = useState([]);
@@ -114,68 +114,67 @@ function List() {
   }
   
   
-
-
+  
+  
   return (
-    <div>
+    <div >
       <form id="search-form" onSubmit={handleSubmit}>
-        <div>
-          <h1>&nbsp;</h1>
-          <h1>&nbsp;</h1>
-        </div>
-        <div className="tupletable__search">
-          <input
-            id="name"
-            type="text"
-            placeholder="Search for your game"
-            value={newGame}
-            onChange={handleNewGameChange}
-          />
-          <button type="submit" id="search-button">
-            <i className="fa fa-search" aria-hidden="true"></i>
-          </button>
-        </div>
-        <div>
+      <div>
+        <h1>&nbsp;</h1>
+        <h1>&nbsp;</h1>
+      </div>
+      <div className="search-box">
+        <input
+          id="name"
+          type="text"
+          placeholder="Search for your game"
+          value={newGame}
+          onChange={handleNewGameChange}
+        />
+        <button type="submit" id="search-button">
+          <i className="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div>
           <h6>&nbsp;</h6>
-        </div>
+      </div>
       </form>
       {showOverlay && (
-        <div className="overlay">
+      <div className="overlay">
           <div className="overlay-content">
-            <button onClick={() => setShowOverlay(false)}>Close</button>
-            <div className="modal-table">
+              <button onClick={() => setShowOverlay(false)}>Close</button>
+              <div className="modal-table">
               <table>
-                <thead>
-                  <tr>
-                    <th>Image</th>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Disc.</th>
-                    <th>Add</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {results.map((item) => (
-                    <tr key={item.id}>
-                      <td>
-                        <img src={item.img} alt="Product" width="200" height="250" />
-                      </td>
-                      <td>{item.name}</td>
-                      <td>{item.price == "Free" ? "Free" : item.price == "" ? "N/A" : "$"+item.price.split("$")[1]}</td>
-                      <td>{item.price.split("$")[2] ? "$"+item.price.split("$")[2]: " "}</td>
-                      <td>
-                        <button onClick={() => handleAddGame(item)}>Add</button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
+                  <thead>
+                      <tr>
+                          <th>Image</th>
+                          <th>Title</th>
+                          <th>Price</th>
+                          <th>Disc.</th>
+                          <th>Add</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {results.map((item) => (
+                          <tr key={item.id}>
+                          <td>
+                              <img src={item.img} alt="Product" width="150" height="100" />
+                          </td>
+                          <td>{item.name}</td>
+                          <td>{item.price == "Free" ? "Free" : item.price == "" ? "N/A" : "$"+item.price.split("$")[1]}</td>
+                          <td>{item.price.split("$")[2] ? "$"+item.price.split("$")[2]: " "}</td>
+                          <td>
+                            <button onClick={() => handleAddGame(item)}>Add</button>
+                          </td>
+                          </tr>
+                      ))}
+                  </tbody>
               </table>
-            </div>
           </div>
-        </div>
+          </div>
+      </div>
       )}
-
-      <table className="tupletable">
+      <table className="modal-table" >
         <thead>
           <tr>
             <th scope="col">Image</th>
@@ -184,52 +183,35 @@ function List() {
           </tr>
         </thead>
         <tbody>
-          {games.map((tuple) => (
+        {games.map((tuple) => (
             <tr key={tuple.game._id}>
-              <td>
-                {tuple.game.img ? (
-                  <img
-                    src={tuple.game.img}
-                    alt={tuple.game.title}
-                    style={{ width: "150px", height: "150px" }}
-                  />
-                ) : (
-                  <img
-                    src={
-                      "https://previews.123rf.com/images/srijianti/srijianti1705/srijianti170519196/78898846-game-text-for-title-or-headline-in-3d-fancy-fun-and-futuristic-style.jpg"
-                    }
-                    alt={tuple.game.title}
-                    style={{ width: "150px", height: "150px" }}
-                  />
-                )}
-              </td>
-              <td>{tuple.game.title}</td>
-              <td>
-                <select
-                  value={gameScores[tuple.game._id] || ""}
-                  onChange={(e) =>
-                    setGameScores((prevScores) => ({
-                      ...prevScores,
-                      [tuple.game._id]: e.target.value,
-                    }))
-                  }
-                >
-                  <option key={tuple.game.score} value={tuple.game.score}>
-                    {tuple.game.score}
-                  </option>
-                  {[...Array(10).keys()].map((i) => (
+                <td>
+                  {tuple.game.img ? (
+                    <img src={tuple.game.img} alt={tuple.game.title} style={{ width: "240px", height: "90px" }} />
+                  ) : (
+                    <img src={'https://previews.123rf.com/images/srijianti/srijianti1705/srijianti170519196/78898846-game-text-for-title-or-headline-in-3d-fancy-fun-and-futuristic-style.jpg'} alt={tuple.game.title} style={{ width: "150px", height: "150px" }} />
+
+                  )}
+                </td>
+                <td>{`${tuple.game.title}`}</td>
+                <td>
+            <select value={gameScores[tuple.game._id] || ''} onChange={(e) => setGameScores((prevScores) => ({ ...prevScores, [tuple.game._id]: e.target.value }))}>
+            <option key={tuple.game.score} value={tuple.game.score}>
+              {tuple.game.score}
+            </option>                  
+                {[...Array(10).keys()].map((i) => (
                     <option key={i + 1} value={i + 1}>
-                      {i + 1}
+                        {i + 1}
                     </option>
-                  ))}
-                </select>
-              </td>
-              <td>
-                <button onClick={() => handleScoreUpdate(tuple)}>Save</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+                ))}
+            </select>
+        </td>
+        <td>
+            <button onClick={() => handleScoreUpdate(tuple)}>Save</button>
+        </td>
+        </tr>
+        ))}
+      </tbody>
       </table>
     </div>
   );
