@@ -62,7 +62,7 @@ function ListTable() {
           <h1 className="mt-5">My Lists</h1>
           <section>
             <div className="container-fluid">
-              <h1 className="mt-5">Lists</h1>
+              <h1 className="mt-5"></h1>
               <form onSubmit={handleSubmit}>
                 <div className="input-group justify-content-center">
                   <div className="input-group-prepend">

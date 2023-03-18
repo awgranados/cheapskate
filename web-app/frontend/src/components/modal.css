@@ -7,6 +7,10 @@
     background-color: #282c34;
     z-index: 1000;
   }
+  * {
+    font-size: 27px; 
+  }
+  
   
   .overlay-content {
     position: absolute;
@@ -83,6 +87,7 @@
   .modal-close-button:hover {
     color: #1a73e8;
   }
+  
   .modal-table-cell img {
     max-width: 100%;
     height: auto;
