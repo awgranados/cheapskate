@@ -15,7 +15,6 @@
 * Install cors: ```npm install cors```
 * Install Puppeteer: ```npm install puppeteer```
 * Install Chromium: ```npm install chromium```
-* 
 ## Running the Web App
 5. cd into the backend folder in one terminal and type the command ```Node index.js```
 6. cd into the frontend folder in another terminal and type the command ```npm start```
