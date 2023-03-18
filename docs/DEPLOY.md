@@ -22,3 +22,7 @@
 6. cd into the frontend folder in another terminal and type the command ```npm start```
 
 The Web App is now ready to use.
+
+
+## Disclaimer
+If there are still any missing packages just run ```npm install "package name“ ``` 
