@@ -1,3 +1,18 @@
+# Alexander Granados
+
+#### Role: Retro 3 Leader, User Manual Coordinator
+
+## Contributions
+
+- Overall gave ideas and feedback towards the task at hand that the team was working on
+- Led the third and final retro meeting, helped to create vision for the final product
+- Updated and maintained the Lists UI in order to match with the rest our design vision
+- Linked together the delete button with interactive UI on the Lists page so that it could be usable
+- Created and oversaw completion of the the User Manual
+- Contributed to the "Team Decisions" portion of the Design Document
+
+#
+
 # Arnav Nayudu
 
 #### Role: UX Coordinator, Final Presentation Leader
@@ -13,21 +28,6 @@
 - Linked search bar on List UI to the web scraper, allowing our webapp to search Steam and display the results in the frontend
 - Single-handedly created, edited, and presented the entire MVP demo
 - Organized, edited, and presented the final presentation as Final Presentation Leader
-
-#
-
-# Alexander Granados
-
-#### Role: Retro 3 Leader, User Manual Coordinator
-
-## Contributions
-
-- Overall gave ideas and feedback towards the task at hand that the team was working on
-- Led the third and final retro meeting, helped to create vision for the final product
-- Updated and maintained the Lists UI in order to match with the rest our design vision
-- Linked together the delete button with interactive UI on the Lists page so that it could be usable
-- Created and oversaw completion of the the User Manual
-- Contributed to the "Team Decisions" portion of the Design Document
 
 #
 
