@@ -2,29 +2,27 @@ const request = require('supertest');
 const { expect } = require('chai');
 const Schemas = require('../models/Schemas');
 const app = require('../index');
+const { Lists } = require('../models/Schemas');
 
-describe('/postForm endpoint', () => {
-  it('should save a new game with title and description fields for the given user', async () => {
+describe('/addGame endpoint', () => {
+  it('should add a new game to the user\'s list', async () => {
     const user = Schemas.Users;
-    const userId = await user.findOne({ username: 'clifford' }).exec();
-    // const newUser = { username: 'JohnDoe', fullname: 'John Doe' };
-    // const createdUser = await user.create(newUser);
-    // const userId = createdUser._id;
-    const postData = { user: userId, title: 'call of duty', description: 'pew pew'};
-    // const response = await request(app)
-    //   .post('/postForm')
-    //   .send(postData);
-    // expect(response.status).to.equal(200);
+    const newUser = { username: 'JohnDoe', fullname: 'John Doe' };
+    const createdUser = await user.create(newUser);
+    const userId = createdUser._id;
+    const list = await Lists.findById('6415186ba5cf463c6b9fdb0f');
+    console.log(list);
+    const postData = { name: 'Call of Duty', selectedList: list};
+    const response = await request(app)
+      .post(`/addGame/${list._id}`)
+      .send(postData);
 
-    try {
-      const savedGame = await Schemas.Games.findOne({ user: userId }).exec();
-      console.log('Saved game:', savedGame);
-      expect(savedGame.title).to.equal(postData.title);
-      expect(savedGame.desc).to.equal(postData.description);
-    } catch (error) {
-      console.log('Error while finding game:', error);
-      throw error;
-    }
-    
-  }).timeout(1000);
+    expect(response.status).to.equal(200);
+    expect(response.body.game.title).to.equal(postData.name);
+    expect(response.body.game.img).to.equal(postData.img);
+
+    const updatedList = await Schemas.Lists.findById(list._id).populate('games.game').exec();
+    expect(updatedList.games[updatedList.games.length - 1].game.title).to.equal(postData.name);
+    expect(updatedList.games[updatedList.games.length - 1].review).to.equal(0);
+  }).timeout(10000);
 });

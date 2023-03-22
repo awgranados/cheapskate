@@ -62,6 +62,7 @@ async function scrapeProduct(url) {
   return data
 }
 
+
 router.get('/scrape/:url', async (req, res, err) => {
   const { url } = req.params;
   console.log(url)
@@ -106,20 +107,19 @@ router.get('/list/:id', async (req, res) => {
 
 })
 
-// should be a POST??
-router.get('/addUser', async(req, res) => {
-  const user = {username: 'user_two', fullname: 'User Two'};
+router.post('/addUser', (req, res) => {
+  const user = {username: req.body.username, fullname: req.body.fullname};
   const newUser = new Schemas.Users(user);
 
-  try {
-      await newUser.save( async(err, newUserResult) => {
-          console.log('New user created!');
-          res.end('New user created!');
-      });
-  } catch (err) {
+  newUser.save((err, newUserResult) => {
+    if (err) {
       console.log(err);
       res.end('User not added!');
-  }
+    } else {
+      console.log('New user created!');
+      res.end('New user created!');
+    }
+  });
 });
 
 // router.get('/lists', async (req, res) => {
