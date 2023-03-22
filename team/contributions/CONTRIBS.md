@@ -1,5 +1,7 @@
 # Clifford Xu
 
+#### Role: Testing/QA Coordinator
+
 ## Contributions
 
 - Updated the UI for our Chrome Extension before we changed our project to a Web App.
@@ -15,6 +17,8 @@
 #
 
 # Jake Yim
+
+#### Role: Scrum Master
 
 ## Contributions
 
@@ -32,6 +36,8 @@
 
 # Jin Jeong
 
+#### Role: Design Document Coordinator
+
 ## Contributions
 
 - Overall tried to provide help to other teammates whenever possible.
@@ -48,6 +54,8 @@
 #
 
 # Kelvin Zhang
+
+#### Role: Deployment Document Coordinator
 
 ## Contributions
 
